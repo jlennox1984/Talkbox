@@ -1,0 +1,1 @@
+2010-12-14 06:15:12 Notice: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [/var/www/devel.mwds.info/web/talkbox/classes/cake/cake/libs/debugger.php, line 688]
