@@ -1,0 +1,72 @@
+/************************************************************************************************************
+
+	DHTML Suite for Applications
+	(C) www.dhtmlgoodies.com, August 2006
+
+	CSS for the DHTMLsuite_tableWidget class.
+	
+	Terms of use:
+	Look at the terms of use at http://www.dhtmlgoodies.com/index.html?page=termsOfUse
+	
+	Thank you!
+	
+	www.dhtmlgoodies.com
+	Alf Magne Kalleland
+
+************************************************************************************************************/
+
+.DHTMLSuite_menuStrip_topBar{	/* The bar that is parent of the menu strip */
+	height:26px;
+	width:100%;
+	background-repeat:repeat-x;
+	font-family: Arial;
+	font-size:12px;
+	z-index:100000;
+}
+
+.DHTMLSuite_menuStrip_menuItem_1,.DHTMLSuite_menuStrip_menuItem_over_1{	/* common css for all menu items on level 1 */
+	margin-top:2px;
+	margin-bottom:2px;
+	margin-right:3px;
+}
+
+.DHTMLSuite_menuStrip_menuItem_1{	/* Level 1 menu items */	
+	padding-left:5px;
+	padding-right:3px;	
+	
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.DHTMLSuite_menuStrip_menuItem_over_1{	/* Level 1 roll over */
+
+
+	padding-left:4px;
+	padding-right:4px;
+
+	padding-top:2px;
+	padding-bottom:2px;
+		
+	border:1px solid #000;
+	background-color:#eda83b;
+	
+}
+
+
+.DHTMLSuite_menuStrip_separator_1{	/* Level 1 separator */
+	height:20px;
+	margin-top:3px;
+	margin-bottom:3px;
+	width:4px;
+	padding-left:3px;
+	padding-right:3px;
+}
+
+.DHTMLSuite_menuStrip_menuArrow1{
+	line-height:26px;
+	padding-left:5px;
+	padding-right:1px;
+}	
+body{
+	margin-top:0px;
+	margin-left:0px;
+}
