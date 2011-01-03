@@ -69,41 +69,4 @@ $speech = stripslashes(trim($_POST["speech"]));
   $web_audio=true;
 }
 ?>
-<html>
-<head>
-<title>Festival: Linux Text-To-Speech Demo</title>
-<style type="text/css">
-<!--
-body { background-color:#ffffff; font-family:Arial, Helvetica, sans-serif; font-size:10pt; color: #000000; }
-h1 { font-family:Arial, Helvetica, sans-serif; font-size:18pt; color: #000000; }
-.tblfont { font-family:Arial, Helvetica, sans-serif; font-size:10pt; color: #000000; }
--->
-</style>
-</head>
-<body>
-<h1>Linux Festival Text-To-Speech Demo</h1>
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-  <table width="400" border="0" cellspacing="5" cellpadding="0" class="tblfont">
-    <tr> 
-      <td colspan="2"><textarea name="speech" wrap="VIRTUAL" style="width:350px;height:100px;"><?php echo $speech; ?></textarea></td>
-    </tr>
-    <tr> 
-      <td width="135">Volume Scale 
-        <input name="volume_scale" type="text" size="3" maxlength="3" value="<?php echo $volume_scale; ?>"> 
-      </td>
-      <td width="265">Save as MP3 
-        <input name="save_mp3" type="checkbox" value="1"<?php if ($save_mp3 == 1) { echo " checked"; } ?>> 
-      </td>
-    </tr>
-    <tr> 
-      <td><input name="make_audio" type="submit" value="Text-To-Speech"></td>
-      <td> 
-        <?php if ($show_audio) { ?>
-        <a href="mp3/<?php echo $listen_file; ?>">Listen to the <?php echo $file_type; ?> file</a> 
-        <?php } ?>
-      </td>
-    </tr>
-  </table>
-</form>
-</body>
 
