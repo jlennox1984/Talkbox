@@ -1,4 +1,0 @@
-<?php ?>
-<html>
-	<head> 
-		</t
