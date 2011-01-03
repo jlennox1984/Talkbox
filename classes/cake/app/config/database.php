@@ -5,8 +5,8 @@ class DATABASE_CONFIG {
 		'driver' => 'postgres',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'talkbox',
+		'login' => 'jeff',
+		'password' => '1771',
 		'database' => 'speachbox',
 		'schema' => 'public',
 	);
@@ -14,8 +14,8 @@ class DATABASE_CONFIG {
 		'driver' => 'postgres',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'talkbox',
+		'login' => 'jeff',
+		'password' => '1771',
 		'database' => 'speachbox',
 		'schema' => 'public',
 	);
@@ -24,8 +24,8 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'port' => 5432,
-		'login' => 'root',
-		'password' => 'talkbox',
+		'login' => 'jeff',
+		'password' => '1771',
 		'database' => 'speachbox',
 		'schema' => 'public',
 	);
