@@ -33,7 +33,7 @@
 class GoogleTTS{
 
     public $strings;
-    private $mp3folder="mp3_tts/";
+    private $mp3folder="mp3_tts";
     
     private $lang='en';
 
@@ -109,9 +109,9 @@ class GoogleTTS{
                 $filename=md5(trim(strtoupper($str))).'.mp3';
 
                 $filepath = $this->mp3folder.$filename;
-                if (!file_exists($filepath)){
-                    file_put_contents($filepath, file_get_contents("http://translate.google.com/translate_tts?tl=".$this->lang."&q=".urlencode($str).""));
-                }
+                //if (!file_exists($filepath)){
+                    file_put_contents($filepath, file_get_contents("http://development.mwds.ca/talkbox/classes/tts/textprocesser.php?q=".urlencode($str).""));
+               // }
             }
 
 
