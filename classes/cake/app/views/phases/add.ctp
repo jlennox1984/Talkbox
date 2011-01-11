@@ -1,10 +1,11 @@
 <div class="phases form">
-<?php echo $this->Form->create('Phase');?>
+<?php echo $this->Form->create('Phase', array('type'=>'file'))?>
 	<fieldset>
  		<legend><?php __('Add Phase'); ?></legend>
 	<?php
 		echo $this->Form->input('phases');
-		echo $this->Form->input('pic');
+		echo "file:", $this->Form->file('filename');
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
