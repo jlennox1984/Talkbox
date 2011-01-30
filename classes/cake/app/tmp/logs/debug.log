@@ -93,3 +93,5 @@
 2011-01-05 06:32:46 Notice: Notice (8): Undefined property: PhasesController::$Document in [/home/talkbox/www/classes/cake/app/controllers/phases_controller.php, line 99]
 2011-01-05 06:34:15 Notice: Notice (8): Undefined property: PhasesController::$Document in [/home/talkbox/www/classes/cake/app/controllers/phases_controller.php, line 99]
 2011-01-05 06:37:54 Notice: Notice (8): Undefined property: PhasesController::$Document in [/home/talkbox/www/classes/cake/app/controllers/phases_controller.php, line 98]
+2011-01-29 13:37:58 Notice: Notice (8): Undefined variable: error in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 110]
+2011-01-29 13:37:58 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 112]
