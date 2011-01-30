@@ -5,7 +5,7 @@ header("Server:translation");
 // and where audio files will be written to after conversion
 $tmpdir = "/tmp";
 $serverroot = $_SERVER['DOCUMENT_ROOT'];
-$audiodir="/home/talkbox/www/classes/tts/mp3_tts";
+$audiodir="/var/www/devel.mwds.info/web/talkbox2/classes/tts/mp3_tts";
 //REQUESTS ADDED BY JEFF
 $LANG=$_REQUEST['tl'];
 $speech_raw=$_REQUEST['q'];
