@@ -110,7 +110,7 @@ class GoogleTTS{
 
                 $filepath = $this->mp3folder.$filename;
                 //if (!file_exists($filepath)){
-                    file_put_contents($filepath, file_get_contents("http://development.mwds.ca/talkbox/classes/tts/textprocesser.php?q=".urlencode($str).""));
+                    file_put_contents($filepath, file_get_contents("http://devel.mwds.info/talkbox2/classes/tts/textprocesser.php?q=".urlencode($str).""));
                // }
             }
 

@@ -14,5 +14,5 @@ $dbname='speachbox';
 $DBI=pg_connect("dbname=$dbname user=$username  password=$password host=localhost ");
 $db=$DBI;
 $database=$dbname;
-$cfg_level=1;
+$cfg_level=0;
 ?>
