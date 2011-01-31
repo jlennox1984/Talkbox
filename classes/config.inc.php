@@ -14,5 +14,7 @@ $dbname='speachbox';
 $DBI=pg_connect("dbname=$dbname user=$username  password=$password host=localhost ");
 $db=$DBI;
 $database=$dbname;
-$cfg_level=0;
+$cfg_level=1;
+$abs_path="/var/www/devel.mwds.ca/web/talkbox2/";
+$pic_path="/var/www/devel.mwds.info/web/talkbox2/pics"
 ?>
