@@ -87,7 +87,10 @@ border:0px;
 	</script>
 	<script type="text/javascript" src="../js/dhtml-suite-for-applications-without-comments.js"></script>
 	<script type="text/javascript" src="../js/dtree.js"></script>
-	<script type="text/javascript" src="../js/servicedesk.js"></script></head>
+	<script type="text/javascript" src="../js/servicedesk.js"></script>
+		<script type="text/javascript" src="../js/talkbox.js"></script>
+
+</head>
 <?php
 // Include the class for tts
 include 'tts/googleTTSphp.class.php';
@@ -202,36 +205,17 @@ pg_close();
     <tr> 
         <td> 
         	<img src="images/mwds_logo.png" width="207" height='80'  alt="logo"> 
-        <span class="gmap_logo">
-        Powered By
-        <a href="http://maps.google.ca"> <img src="images/gmaps_logo.png"></a>
-        </td> 
-        <td> 
-        </td> 
 		
 
 </tr> 
 </table> 
-<center><h2> Talk BOX</h2></center>
+<center><h2>  Welcome Talk BOX</h2></center>
 <hr>
 
-	<div id="phases">
-        <h2> Phases</h2>
-<?php	$talkbox->showphases();	?>
-                </div>
-
-
-<form name="Talkbox" method="post" action="<?php $_SERVER['self']?>">
-<input name="tts1" value="<?php echo $tts1?>">
-<input type="submit" name="submit" value="TALK">
-</form>
-<?php echo $ds->getPlayerDiv() /*Only include one time, even if you have many class instances. This div is needed and can be included anywhere on your page. */ ?>
-</div>
-
-<p> 
-	</p> 
+	<h3> please select say it on the left menu for para Phases</h3>
+	
 	<div align="center"> 
-	<img src="images/sd-logo.png"  width="200" height="150"> 
+	        <p> please select say it on the left menu for para Phases</p>
 	</div> 
   <hr>
   <div class='header_splash'>
@@ -309,7 +293,7 @@ paneWest.addContent( new DHTMLSuite.paneSplitterContentModel( { id:"westContent"
 //paneEast.addContent( new DHTMLSuite.paneSplitterContentModel( { id:"eastContent",htmlElementId:'eastContent',title:'East',tabTitle: 'Tab 1' } ) );
 
 
-var paneSouth = new DHTMLSuite.paneSplitterPaneModel( { position : "south", id:"southPane",size:70,minSize:50,maxSize:400,scrollbars:false,resizable:false,callbackOnCollapse:'callbackFunction' } );
+var paneSouth = new DHTMLSuite.paneSplitterPaneModel( { position : "south", id:"southPane",size:200,minSize:50,maxSize:400,scrollbars:true,resizable:true,callbackOnCollapse:'callbackFunction' } );
 paneSouth.addContent( new DHTMLSuite.paneSplitterContentModel( { id:"southContent",htmlElementId:'southContent',title:' ', tabTitle:'Home',closable:false} ) );
 
 var paneNorth = new DHTMLSuite.paneSplitterPaneModel( { position : "north", id:"northPane",size:40,scrollbars:false,resizable:false } );
