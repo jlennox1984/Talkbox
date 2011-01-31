@@ -2,15 +2,16 @@
 class PhasesController extends AppController {
 
 	var $name = 'Phases';
-	
+	var $path='/var/www/devel.mwds.info/web/talkbox2/';	
 	var $validateFile = array(
                           'size' => 204800,
 	                  'type' => 'jpg,jpeg,png,gif'
                           );
 
 	function generateUniqueFilename($fileName, $path=''){
-    $path = empty($path) ? WWW_ROOT.'/files/' : $path;
-    $no = 1;
+   //$path = empty($path) ? WWW_ROOT.'/files/' : $path;
+     $path='/var/www/devel.mwds.info/web/talkbox2/';
+	 $no = 1;
     $newFileName = $fileName;
     while (file_exists("$path/".$newFileName)) {
       $no++;
@@ -20,6 +21,8 @@ class PhasesController extends AppController {
   }
 	  function handleFileUpload($fileData, $fileName)
   {
+	 $path='/var/www/devel.mwds.info/web/talkbox2/pics/';
+
     $error = false;
 
     //Get file type
@@ -50,7 +53,8 @@ class PhasesController extends AppController {
           if (is_uploaded_file($fileData['tmp_name']))
           {
             //Finally we can upload file now. Let's do it and return without errors if success in moving.
-            if (!move_uploaded_file($fileData['tmp_name'], WWW_ROOT.'/files/'.$fileName))
+        	    
+	if (!move_uploaded_file($fileData['tmp_name'], $path. '/' .$fileName))
             {
               $error = true;
             }
