@@ -4,7 +4,7 @@
  		<legend><?php __('Add Phase'); ?></legend>
 	<?php
 		echo $this->Form->input('phases');
-		 echo $this->Form->input('label');
+		 echo $this->Form->input('paraphase');
 	
 		echo "file:", $this->Form->file('filename');
 
