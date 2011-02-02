@@ -7,9 +7,9 @@ class talkbox{
 
 	function showword(){
 	global  $DBI;
-	$sql="SELECT phases FROM phases";
+	$sql="SELECT phases,id FROM phases";
 	$result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
-	$cols=3;
+	$cols=6;
 if(pg_num_rows($result)==0){
      die('No results returned!');
 }
@@ -19,7 +19,7 @@ $i = 0;//indexing variable
 
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     echo "<td><a href='#' onclick=sayit('{$row['phases']}')>{$row['phases']}</a></td>";
+     echo "<td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td>";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
 }
@@ -30,9 +30,9 @@ echo "</tr></table>";
 	function showpict(){
 	global  $DBI;
 	 $path_pics="../pics";
-        $sql="SELECT id,phases,filename FROM phases";
+        $sql="SELECT id,phases,paraphase,filename FROM phases";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
-       $cols=3;
+       $cols=6;
 	if(pg_num_rows($result)==0){
     	 die('No results returned!');
 }
@@ -42,8 +42,8 @@ $i = 0;//indexing variable
 $path_pics="http://devel.mwds.info/talkbox2/pics";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     echo " <td><table border=2><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
-		<tr><td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td></table>
+     echo " <td><table border=0><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
+		<tr><td><a href='#' onclick='sayit({$row['id']})'>{$row['phases']}</a></td></table>
 			</td>\r\n";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
@@ -56,7 +56,7 @@ print "</tr></table>\r\n";
  function getphases(){
 	 
  	global  $DBI;
-        $sql="SELECT id, phases,filename FROM phases";	
+        $sql="SELECT id, phases,filename ,paraphase FROM phases";	
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $rows= pg_num_rows($result);
         pg_close($DBI);	
@@ -69,8 +69,17 @@ print "</tr></table>\r\n";
 		
              while($row=pg_fetch_array($result)){
 
-		
-                print "<input type='hidden' class='phases' id='{$row[0]}' value='{$row['1']}' />\r\n";
+	       $phase=$row['phases'];
+        $paraphase=$row['paraphase'];
+
+        $verb;
+        if($paraphase !=''){
+         $verb=$paraphase;
+        }else{
+        $verb=$phase;
+}
+     	
+                print "<input type='hidden' class='phases' id='{$row[0]}' value='{$verb}' />\r\n";
 	
 	}
 }
