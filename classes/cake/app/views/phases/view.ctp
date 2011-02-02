@@ -11,6 +11,13 @@
 			<?php echo $phase['Phase']['pic']; ?>
 			&nbsp;
 		</dd>
+		  <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Paraphase'); ?></dt>
+                <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+                        <?php echo $phase['Phase']['paraphase']; ?>
+                        &nbsp;
+                </dd>
+	
+		
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $phase['Phase']['id']; ?>
