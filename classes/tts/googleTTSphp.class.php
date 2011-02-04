@@ -191,7 +191,7 @@ class GoogleTTS{
 class GoogleTTSHTML extends GoogleTTS{
     private $jplayerloc='jPlayer/jquery.jplayer.js';
     private $hotkeyloc='jPlayer/jquery.hotkeys-0.7.9.min.js';
-    private $jqueryLocation='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js';
+    private $jqueryLocation='jPlayer/jquery-1.3.2.js ';
 
     private $autoplay=true;
 
