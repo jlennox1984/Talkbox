@@ -6,8 +6,8 @@
  */
 
 $dhost='localhost';
-$username="jeff";
-$pass="1771";
+$username="postgres";
+$pass="";
 $password=$pass;
 //$db=mysql_connect($dhost, $username, $pass)or die     ('Error connecting to mysql');
 $dbname='speachbox';

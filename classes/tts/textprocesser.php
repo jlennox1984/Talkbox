@@ -5,11 +5,11 @@ header("Server:translation");
 // and where audio files will be written to after conversion
 $tmpdir = "/tmp";
 $serverroot = $_SERVER['DOCUMENT_ROOT'];
-$audiodir="/var/www/devel.mwds.info/web/talkbox2/classes/tts/mp3_tts";
+$audiodir="/var/www/classes/tts/mp3_tts";
 //REQUESTS ADDED BY JEFF
 $LANG=$_REQUEST['tl'];
 $speech_raw=$_REQUEST['q'];
- print "output $speechi_raw";
+ print "output $speech_raw";
  $_POST["make_audio"]=true;
 
 $save_mp3=true;
@@ -30,8 +30,10 @@ print "Processed";
 $save_mp3=true;
 $speech =stripslashes(trim($speech_raw));  
 $speech = substr($speech, 0, 1024);
-  $volume_scale = intval($_POST["volume_scale"]);
-  if ($volume_scale <= 0) { $volume_scale = 1; }
+ // $volume_scale = intval($_POST["volume_scale"]);
+  	// Moded 022811
+	$volume_scale=50; 
+ if ($volume_scale <= 0) { $volume_scale = 1; }
   if ($volume_scale > 100) { $volume_scale = 100; }
 //  if (intval($_POST["save_mp3"]) == 1) { $save_mp3 = true; }
 
