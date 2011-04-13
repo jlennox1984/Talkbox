@@ -19,7 +19,7 @@ $tb->showphases();
 <hr>
 <form name="Talkbox" method="post" action="">
 <input name="tts1"  id="tts1" value="" >
-<input type="submit" onclick="loadvoicebox();"  value="TALK">
+<input type="button" onclick="loadvoicebox();"  value="TALK">
 <iframe id='voiceframe'/>
 </body>
 

@@ -39,7 +39,7 @@ echo "</tr></table>";
 
 echo "<table>";
 $i = 0;//indexing variable
-$path_pics="http://devel.mwds.info/talkbox2/pics";
+$path_pics="http://localhost/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
      echo " <td><table border=0><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
