@@ -197,7 +197,7 @@ pg_close();
 <div id="northContent">
 <div id="logo">
 	<img src="../images/mwds_logo.png" height="20px" id="MWDS Logo" alt="MWDS Logo">
-<div style="float:right;font-family:Times New Roman,Times,serif;font-size:9px;"><a href='logout.php'>Logout</a></div>
+<div style="float:right;font-family:Times New Roman,Times,serif;font-size:9px;"><!--a href='logout.php'>Logout</a></div>-->
 
 <!-- <div id="menuBarContainer"><div id="innerDiv"></div><div id="rightDiv"></div></div></div>-->
 <div id="center">
