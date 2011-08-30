@@ -14,7 +14,7 @@ if(pg_num_rows($result)==0){
      die('No results returned!');
 }
 
-echo "<table>";
+echo "<table border='0'>";
 $i = 0;//indexing variable
 
 while($row = pg_fetch_array($result)){
@@ -39,11 +39,11 @@ echo "</tr></table>";
 
 echo "<table>";
 $i = 0;//indexing variable
-$path_pics="http://localhost/pics/";
+$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     echo " <td><table border=0><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
-		<tr><td><a href='#' onclick='sayit({$row['id']})'>{$row['phases']}</a></td></table>
+     echo " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
+		<tr><td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td></table>
 			</td>\r\n";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
@@ -98,8 +98,9 @@ print "</tr></table>\r\n";
 	
 	function storehisory($phase){
 	global $DBI;
+	$TS=date('Y-m-d H:i:s');
 	if($phase !=''){
-	$SQL="INSERT INTO history (phase) VALUES ('$phase')";
+	$SQL="INSERT INTO history (phase,time) VALUES ('$phase','$TS')";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 }
 	}
