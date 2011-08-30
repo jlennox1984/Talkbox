@@ -95,4 +95,12 @@ print "</tr></table>\r\n";
 	$this->getphases();
 		}
 	}
+	
+	function storehisory($phase){
+	global $DBI;
+	if($phase !=''){
+	$SQL="INSERT INTO history (phase) VALUES ('$phase')";
+	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+}
+	}
 }
