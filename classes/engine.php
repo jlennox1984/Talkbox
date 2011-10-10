@@ -26,6 +26,8 @@ $ds->setLang('en'); // Not needed, because en is default.
 // We choose to play the sound files automatically when users load the screen.
 $ds->setAutoPlay(true);
 
+$ds->setUrl($TBUrl);
+
 // You can choose custom paths or modify the location to jquery, jplayer and hotkey.
 // if you forexample already included the jquery earlier you set setJqueryLocation('') to empty like that. It will then not include it.
 #$ds->setJqueryLocation('Path to jquery file...')
