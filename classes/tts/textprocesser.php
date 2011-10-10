@@ -1,13 +1,16 @@
 <?php
+include ("../config.inc.php");
+
 header("Content-Type:audio/mpeg");
 header("Server:translation");
 // define the temporary directory
 // and where audio files will be written to after conversion
 $tmpdir = "/tmp";
 $serverroot = $_SERVER['DOCUMENT_ROOT'];
-$audiodir="/var/www/classes/tts/mp3_tts";
+global $audiodir;
 //REQUESTS ADDED BY JEFF
-$LANG=$_REQUEST['tl'];
+//$LANG=$_REQUEST['lang'];
+$LANG="en";
 $speech_raw=$_REQUEST['q'];
  print "output $speech_raw";
  $_POST["make_audio"]=true;
