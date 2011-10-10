@@ -32,6 +32,7 @@
 
 class GoogleTTS{
 
+   
     public $strings;
     private $mp3folder="mp3_tts";
     
@@ -65,7 +66,11 @@ class GoogleTTS{
     public function setLang($l){
         $this->lang = $l;
     }
-    
+ 	public function setUrl($url){
+	$this->url =$url; 
+	return true;
+	}
+	
     /**
       * Sets the storage path, where this class saves and caches mp3 files.
       * @param $htmlcode A whole html page, or just bits of xml / html.
@@ -107,10 +112,11 @@ class GoogleTTS{
             $strA = $this->strSplitWordFriendly($s, 100);
             foreach($strA as $str){
                 $filename=md5(trim(strtoupper($str))).'.mp3';
-
+		$TBUrl=$this->url;	
+		$URL="$TBUrl"."/tts/textprocesser.php?q=".urlencode($str).".&lang=en";		
                 $filepath = $this->mp3folder.$filename;
                 //if (!file_exists($filepath)){
-                    file_put_contents($filepath, file_get_contents("http://localhost/classes/tts/textprocesser.php?q=".urlencode($str).""));
+                    file_put_contents($filepath, file_get_contents($URL));
                // }
             }
 

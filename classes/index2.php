@@ -1,9 +1,9 @@
 <?php
-
 include 'functions.php';
  $talkbox= new talkbox();
 
-#include 'config.inc.php';
+global $DBI;
+include 'config.inc.php';
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
@@ -172,8 +172,8 @@ $ds->downloadMP3();
 //require 'config.inc.php';/* Variables from my database include file */
 	// Node(id, pid, name, url, title, target, isopen, img ,target) 
 		
-		$constr="dbname=speachbox  user=root  password=5373988";
-		$DBI =pg_connect($constr);
+	# 	$constr="dbname=speachbox  user=root  password=5373988";
+	#	$DBI =pg_connect($constr);
 		$query = "SELECT orderno, parentid, title, name,url,img,pane FROM folders";
 		$result = pg_exec($DBI,$query) or die ("Fail Query");
 		while ($row = pg_fetch_array($result)) {
