@@ -1,8 +1,11 @@
 <?php
-include ("../config.inc.php");
+include "../config.inc.php";
+require "../functions.php";
+$tb= new talkbox();
 
 header("Content-Type:audio/mpeg");
 header("Server:translation");
+
 // define the temporary directory
 // and where audio files will be written to after conversion
 $tmpdir = "/tmp";
@@ -35,7 +38,9 @@ $speech =stripslashes(trim($speech_raw));
 $speech = substr($speech, 0, 1024);
  // $volume_scale = intval($_POST["volume_scale"]);
   	// Moded 022811
-	$volume_scale=50; 
+//	$volume_scale=50;
+	$vol=$tb->getconfig('vol');
+	$volume_scale=$vol*10; 
  if ($volume_scale <= 0) { $volume_scale = 1; }
   if ($volume_scale > 100) { $volume_scale = 100; }
 //  if (intval($_POST["save_mp3"]) == 1) { $save_mp3 = true; }
@@ -90,7 +95,7 @@ $speech = substr($speech, 0, 1024);
 } else {
   // default values
   $speech = "Hello there!";
-  $volume_scale = 50;
+  $volume_scale = $tb->getconfig('vol');
   $save_mp3 = true;
 }
 header("Content-Type: audio/mpeg");

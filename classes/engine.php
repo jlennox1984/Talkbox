@@ -11,6 +11,7 @@
 include 'tts/googleTTSphp.class.php';
 include  'functions.php';
 $tb = new talkbox; 
+$vol=$tb->getconfig('vol') *10;
 $str=$_REQUEST['str'];
 $tb->storehisory($str);
 // Start the HTML instance, this provides features such as javascript implementions and functions already configured. You may also use GoogleTTS if you do not want html specific features.
@@ -27,6 +28,7 @@ $ds->setLang('en'); // Not needed, because en is default.
 $ds->setAutoPlay(true);
 
 $ds->setUrl($TBUrl);
+$ds->setVol($vol);
 
 // You can choose custom paths or modify the location to jquery, jplayer and hotkey.
 // if you forexample already included the jquery earlier you set setJqueryLocation('') to empty like that. It will then not include it.

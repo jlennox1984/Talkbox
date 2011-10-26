@@ -70,6 +70,10 @@ class GoogleTTS{
 	$this->url =$url; 
 	return true;
 	}
+
+	 public function setVol($vol){
+        $this->vol = $vol;
+        }
 	
     /**
       * Sets the storage path, where this class saves and caches mp3 files.
@@ -343,7 +347,7 @@ class GoogleTTSHTML extends GoogleTTS{
 
 
         		},
-        		volume: 50
+        		volume: '.$this->vol.'
         	}).jPlayer("onSoundComplete", function() {
                if (CURRENT_AUDIO_FOR_HTML_SITE <= SONGS_FOR_HTML_SITE.length-2){
                    this.element.jPlayer("setFile", SONGS_FOR_HTML_SITE[++CURRENT_AUDIO_FOR_HTML_SITE]).jPlayer("play");
