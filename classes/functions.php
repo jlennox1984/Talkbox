@@ -53,6 +53,23 @@ if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 print "</tr></table>\r\n";
 
 }
+function getconfig($key){
+	global $DBI;
+	$SQL="SELECT value FROM config where key='$key'";
+	$result = pg_query($DBI, $SQL) or die("Error in query: $query." . pg_last_error($connection));
+		while($row=pg_fetch_array($result)){
+	
+			$value=$row['value'];
+}
+return $value;
+}
+
+function updateconfig($key,$value){
+ global $DBI;
+	$SQL="UPDATE config SET value = $value WHERE key='$key'";
+	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+
+}
  function getphases(){
 	 
  	global  $DBI;
@@ -104,4 +121,27 @@ print "</tr></table>\r\n";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 }
 	}
+function volctl(){
+
+$i=1;
+//Get vol key
+$vol=0;
+$vol=$this->getconfig('vol');
+ 
+echo "<h1>Volume Control level $vol</h1>";
+echo "<table><tr>";
+ 	for ($i=1; $i <=11;$i++){
+	echo "<td>";
+		$val=$i*10;
+		if($vol==$i){	
+			echo " $val <input type='radio' name='volctl' value='$val'  onclick='savevol($i)' checked> </td>";
+		}else{
+			 echo " $val <input type='radio' name='volctl' value='$val'   onclick='savevol($i)'> </td>";
+		}
+		
+	}
+	echo "</tr></table>";
+	
+
+}
 }
