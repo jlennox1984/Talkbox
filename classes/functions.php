@@ -12,10 +12,8 @@ function talkboxheader(){
 	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
                 <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
-                <title>AutoComplete 1.2 Scriptaculous Example</title> 
                 <link rel="stylesheet" type="text/css" href="assets/style.css"></link> 
         
-</head>
 ';
 print $header;
 }
@@ -84,7 +82,7 @@ $i = 0;//indexing variable
 $path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
+     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']},\'main'/)>
 		<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode')>{$row['phases']}</a></td></table>
 			</td>\r\n";
      if($i%$cols == $cols -1)
@@ -188,7 +186,7 @@ $i=1;
 $vol=0;
 $vol=$this->getconfig('vol');
  
-echo "<h1>Volume Control level $vol</h1>";
+print "<h2> Volume: $vol</h2>";
 echo "<table><tr>";
  	for ($i=1; $i <=10;$i++){
 	echo "<td>";
