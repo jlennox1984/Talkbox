@@ -33,7 +33,7 @@ $i = 0;//indexing variable
 
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     echo "<td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td>";
+     print "<td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td>'\r\n";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
 }
@@ -41,8 +41,36 @@ $i++;
 if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 echo "</tr></table>";
 }
+function showhistory(){ 
+        global  $DBI;
+	$mode='history';
+        $sql="SELECT phase,id FROM history";
+        $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
+        $cols=6;
+if(pg_num_rows($result)==0){
+     die('No results returned!');
+}
+
+echo "<table border='0'>";
+$i = 0;//indexing variable
+
+while($row = pg_fetch_array($result)){
+     if($i%$cols == 0)echo "<tr>\r\n";
+     print "<td><a href='#'  onclick=sayit('{$row['id']}',$mode)>{$row['phase']}</a></td>\r\n";
+     if($i%$cols == $cols -1)echo "</tr>\r\n";
+$i++;
+}
+
+if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
+echo "</tr></table>";
+$this->getphases('history');
+
+}
+
+
 	function showpict(){
 	global  $DBI;
+	$mode='main';
 	 $path_pics="../pics";
         $sql="SELECT id,phases,paraphase,filename FROM phases";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
@@ -56,10 +84,11 @@ $i = 0;//indexing variable
 $path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     echo " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
-		<tr><td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td></table>
+     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']}')>
+		<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode')>{$row['phases']}</a></td></table>
 			</td>\r\n";
-     if($i%$cols == $cols -1)echo "</tr>\r\n";
+     if($i%$cols == $cols -1)
+	echo "</tr>\r\n";
 $i++;
 }
 
@@ -84,11 +113,19 @@ function updateconfig($key,$value){
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 
 }
- function getphases(){
+ function getphases($type){
 	 
  	global  $DBI;
-        $sql="SELECT id, phases,filename ,paraphase FROM phases";	
-        $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
+	$sql;
+	//print "Mode $type\r\n";
+       if($type=='main'){
+
+	 $sql="SELECT id, phases,filename ,paraphase FROM phases";	
+     }
+	elseif($type=='history'){
+	$sql="SELECT id,phase AS phases FROM history";
+	}
+	   $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $rows= pg_num_rows($result);
         pg_close($DBI);	
 
@@ -101,14 +138,23 @@ function updateconfig($key,$value){
              while($row=pg_fetch_array($result)){
 
 	       $phase=$row['phases'];
-        $paraphase=$row['paraphase'];
 
-        $verb;
-        if($paraphase !=''){
-         $verb=$paraphase;
-        }else{
-        $verb=$phase;
+       	if($type=='main'){
+			$paraphase=$row['paraphase'];	
+			 	if($paraphase ==''){
+       				  $verb=$phase;
+			        }else{
+      				  $verb=$row['paraphase'];
+
+		}
+
+	}elseif($type=='history'){
+		$paraphase='';
+		$verb=$phase;
 }
+		
+        $verb;
+  
      	
                 print "<input type='hidden' class='phases' id='{$row[0]}' value='{$verb}' />\r\n";
 	
@@ -123,7 +169,7 @@ function updateconfig($key,$value){
         }
         elseif($cfg_level==1){
         $this->showpict();
-	$this->getphases();
+	$this->getphases('main');
 		}
 	}
 	
