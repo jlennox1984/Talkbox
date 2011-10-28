@@ -16,3 +16,21 @@ function sayit(id){
  document.getElementById('voiceframe').style.display='block';
 
 }
+ // Get the HTTP Object
+    function getHTTPObject(){
+        if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
+            else if (window.XMLHttpRequest) return new XMLHttpRequest();
+        else {
+            alert("Ajax not supported.");
+            return null;
+        }
+    }
+
+function savevol(str){
+httpObject = getHTTPObject();
+//if (httpObject != null) {
+	httpObject.open("GET", "savevol.php?vol="+str)
+	httpObject.send(null);
+
+//	}
+}

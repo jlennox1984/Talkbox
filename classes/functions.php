@@ -4,7 +4,21 @@ require 'config.inc.php';
 
 class talkbox{
 
-
+function talkboxheader(){
+		$header='<link rel="stylesheet" type="text/css" href="cake/css/cake.generic.css" />
+        <link rel="stylesheet" type="text/css" href="css/talkbox.css" />
+         <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">      
+        <script type="text/javascript" src="../js/talkbox.js"></script>
+	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
+                <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
+                <script type="text/javascript" src="../js/AutoComplete.js"></script> 
+                <title>AutoComplete 1.2 Scriptaculous Example</title> 
+                <link rel="stylesheet" type="text/css" href="assets/style.css"></link> 
+        
+</head>
+';
+print $header;
+}
 	function showword(){
 	global  $DBI;
 	$sql="SELECT phases,id FROM phases";
@@ -130,7 +144,7 @@ $vol=$this->getconfig('vol');
  
 echo "<h1>Volume Control level $vol</h1>";
 echo "<table><tr>";
- 	for ($i=1; $i <=11;$i++){
+ 	for ($i=1; $i <=10;$i++){
 	echo "<td>";
 		$val=$i*10;
 		if($vol==$i){	
