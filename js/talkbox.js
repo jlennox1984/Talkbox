@@ -1,16 +1,16 @@
 function loadvoicebox(){
+var mode='main'
  var str= document.getElementById("tts1").value;
- document.getElementById('voiceframe').src='engine.php?str=' +str;
+ document.getElementById('voiceframe').src='engine.php?str=' +str+'&mode='+mode;
  document.getElementById('voiceframe').style.width='0px';
  document.getElementById('voiceframe').style.height='0px';
  document.getElementById('voiceframe').style.display='block';
 
 	
 }
-function sayit(id){
-	var str= document.getElementById(+id).value;
-
- document.getElementById('voiceframe').src='engine.php?str=' +str;
+function sayit(id,mode){
+var str=document.getElementById(+id).value;
+ document.getElementById('voiceframe').src='engine.php?mode='+mode+'&str='+str;
  document.getElementById('voiceframe').style.width='0px';
  document.getElementById('voiceframe').style.height='0px';
  document.getElementById('voiceframe').style.display='block';
