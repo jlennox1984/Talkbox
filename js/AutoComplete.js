@@ -511,12 +511,19 @@ var AutoComplete = Class.create({
 		if(this.selector.options.length)
 		// word count 
 		 var count = this.input.value.split(' ').length;
-	//	alert(count); 
+		//alert(count); 
+		
+		if(count==1)
+		{ 
+			currenttext=''
+		} 
+		else
+		{
 		var currenttext= this.input.value;
-
+		}
 		var phase= currenttext.slice(0,currenttext.lastIndexOf(" "));
 	//	alert(phase);
-this.input.value = phase +" "+ this.selector.options[this.selector.selectedIndex].value
+		this.input.value = phase +" "+ this.selector.options[this.selector.selectedIndex].value
 			
 		this.cancel();
 		if(typeof this.options.onSelect == 'function')
