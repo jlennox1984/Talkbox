@@ -5,9 +5,9 @@ class DATABASE_CONFIG {
 		'driver' => 'postgres',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'talkbox',
-		'password' => 'talkbox',
-		'database' => 'speachbox',
+		'login' => 'postgres',
+		'password' => '5373988',
+		'database' => 'talkbox',
 		'schema' => 'public',
 	);
 	var $test = array(
@@ -24,9 +24,9 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'port' => 5432,
-		'login' => 'jeff',
-		'password' => '1771',
-		'database' => 'speachbox',
+		'login' => 'postgres',
+		'password' => '5373988',
+		'database' => 'talkbox',
 		'schema' => 'public',
 	);
 }
