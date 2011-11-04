@@ -42,7 +42,7 @@ echo "</tr></table>";
 function showhistory(){ 
         global  $DBI;
 	$mode='history';
-        $sql="SELECT phase,id FROM history";
+        $sql="SELECT phase,id,type FROM history";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $cols=6;
 if(pg_num_rows($result)==0){
@@ -53,8 +53,19 @@ echo "<table border='0'>";
 $i = 0;//indexing variable
 
 while($row = pg_fetch_array($result)){
-     if($i%$cols == 0)echo "<tr>\r\n";
-     print "<td><a href='#'  onclick=sayit('{$row['id']}',$mode)>{$row['phase']}</a></td>\r\n";
+		$mode=$row['type'];
+		$id=$row['id'];
+	     if($i%$cols == 0)echo "<tr>\r\n";
+	     print "<td><table><tr><td>\r\n
+			<a href='#'  onclick=sayit('$id',$mode)>{$row['phase']}</a></td>\r\n
+				</tr>
+				";
+			
+				if($mode=='tts'){
+					print"<tr><td class='msgcommon' id='$id'> <a href='#' onclick='savephase($id);'>Save phase as common Phase</a>
+						 </td></tr>";
+						}
+				print "</table> ";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
 }
@@ -64,6 +75,28 @@ echo "</tr></table>";
 $this->getphases('history');
 
 }
+
+function savephase($hid){
+//hid=history id
+
+
+	global $DBI;
+	$sql="SELECT  phase FROM history where history.id=$hid";
+	 $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
+		while($row = pg_fetch_array($result)){
+			$phase=$row['phase'];
+			$date=date('Y-m-d H:i:s');
+			//INSERT IN TO MAIN PHASES//
+			$SQL="INSERT INTO phases(phases,modified,created) VALUES('$phase','$date','$date')";
+			 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+			//UPDATE MODE IN HISTORY//
+			$SQL="UPDATE history SET type='main' where id='$hid'";
+			 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+
+ 	}			
+}
+
+
 
 
 	function showpict(){
@@ -116,7 +149,7 @@ function updateconfig($key,$value){
  	global  $DBI;
 	$sql;
 	//print "Mode $type\r\n";
-       if($type=='main'){
+       if($type=='main'||$type=='tts'){
 
 	 $sql="SELECT id, phases,filename ,paraphase FROM phases";	
      }
@@ -137,7 +170,7 @@ function updateconfig($key,$value){
 
 	       $phase=$row['phases'];
 
-       	if($type=='main'){
+       	if($type=='main'||$type=='tts'){
 			$paraphase=$row['paraphase'];	
 			 	if($paraphase ==''){
        				  $verb=$phase;
@@ -163,7 +196,7 @@ function updateconfig($key,$value){
         global $cfg_level;
 	
         if($cfg_level==0){
-        $this->showword();
+        $this->showword();	
         }
         elseif($cfg_level==1){
         $this->showpict();
@@ -171,11 +204,11 @@ function updateconfig($key,$value){
 		}
 	}
 	
-	function storehisory($phase){
+	function storehisory($phase,$mode){
 	global $DBI;
 	$TS=date('Y-m-d H:i:s');
 	if($phase !=''){
-	$SQL="INSERT INTO history (phase,time) VALUES ('$phase','$TS')";
+	$SQL="INSERT INTO history (phase,time,type) VALUES ('$phase','$TS','$mode')";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 }
 	}
