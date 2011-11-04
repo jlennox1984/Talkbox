@@ -5,9 +5,11 @@
 	<?php
 		echo $this->Form->input('phases');
 		 echo $this->Form->input('paraphase');
-		echo $this->Form->input('pic');
+//		echo $this->Form->input('pic');
+		echo "Picture:" .$this->Form->file('filename');
 		echo $this->Form->input('id');
-	?>
+		 echo "Boards:" , $this->Form->select('boards.id' ,$boards_list);
+?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
