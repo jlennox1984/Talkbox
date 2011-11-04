@@ -1,0 +1,78 @@
+2011-10-28 12:30:19 Warning: Warning (2): pg_connect() [http://php.net/function.pg-connect]: Unable to connect to PostgreSQL server: FATAL:  password authentication failed for user "talkbox"
+FATAL:  password authentication failed for user "talkbox" in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 119]
+2011-10-28 12:30:19 Warning: Warning (2): pg_query() expects parameter 1 to be resource, boolean given in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-10-28 12:30:19 Warning: Warning (2): pg_last_error() expects parameter 1 to be resource, boolean given in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 339]
+2011-10-28 12:30:19 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/debugger.php:673) in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/controller/controller.php, line 746]
+2011-10-28 12:36:26 Warning: Warning (2): pg_connect() [http://php.net/function.pg-connect]: Unable to connect to PostgreSQL server: fe_sendauth: no password supplied in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 119]
+2011-10-28 12:36:26 Warning: Warning (2): pg_query() expects parameter 1 to be resource, boolean given in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-10-28 12:36:26 Warning: Warning (2): pg_last_error() expects parameter 1 to be resource, boolean given in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 339]
+2011-10-28 12:36:26 Warning: Warning (2): Cannot modify header information - headers already sent by (output started at /var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/debugger.php:673) in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/controller/controller.php, line 746]
+2011-10-31 18:36:36 Warning: Warning (4096): Object of class FormHelper could not be converted to string in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/phases/edit.ctp, line 13]
+2011-11-01 01:26:06 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "boards" ON ("Phase"."b...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-01 01:26:06 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "boards" ON ("Phase"."b...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-01 01:26:06 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/phases/index.ctp, line 11]
+2011-11-01 01:52:15 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 147]
+2011-11-01 01:54:04 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  relation "board" does not exist
+LINE 1: SELECT * FROM board;
+                      ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-01 01:54:04 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  relation "board" does not exist
+LINE 1: SELECT * FROM board;
+                      ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-01 01:54:04 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 147]
+2011-11-01 01:55:57 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 147]
+2011-11-04 01:21:50 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "Boards" ON ("Phase"."b...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:21:50 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "Boards" ON ("Phase"."b...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:21:50 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/phases/index.ctp, line 11]
+2011-11-04 01:26:06 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "Boards" ON ("Phase"."b...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:26:06 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Phase.boards_id does not exist
+LINE 1: ...es" AS "Phase" LEFT JOIN "boards" AS "Boards" ON ("Phase"."b...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:26:06 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/phases/index.ctp, line 11]
+2011-11-04 01:28:45 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:28:45 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:33:22 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:33:22 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:35:43 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:35:43 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  syntax error at or near "generateList"
+LINE 1: generateList
+        ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:54:55 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: ... "Boards__name" FROM "boards" AS "Boards"   WHERE id    LIMI...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:54:55 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: ... "Boards__name" FROM "boards" AS "Boards"   WHERE id    LIMI...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 01:56:35 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: ...ards__modified" FROM "boards" AS "Boards"   WHERE id    LIMI...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 01:56:35 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  argument of WHERE must be type boolean, not type integer
+LINE 1: ...ards__modified" FROM "boards" AS "Boards"   WHERE id    LIMI...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-04 02:01:04 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  invalid reference to FROM-clause entry for table "boards"
+LINE 1: SELECT "boards"."id" AS "boards__id", "boards"."name" AS "bo...
+               ^
+HINT:  Perhaps you meant to reference the table alias "Boards". in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-04 02:01:04 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  invalid reference to FROM-clause entry for table "boards"
+LINE 1: SELECT "boards"."id" AS "boards__id", "boards"."name" AS "bo...
+               ^
+HINT:  Perhaps you meant to reference the table alias "Boards".</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]

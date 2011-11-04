@@ -6,7 +6,8 @@ class PhasesController extends AppController {
 	var $validateFile = array(
                           'size' => 204800,
 	                  'type' => 'jpg,jpeg,png,gif'
-                          );
+          				);
+		
 
 	function generateUniqueFilename($fileName, $path=''){
    //$path = empty($path) ? WWW_ROOT.'/files/' : $path;
@@ -86,6 +87,8 @@ function deleteMovedFile($fileName)
 	function index() {
 		$this->Phase->recursive = 0;
 		$this->set('phases', $this->paginate());
+		$this->set('boards', $this->Phase->Boards->find('all')); 
+ 
 	}
 
 	function view($id = null) {
@@ -125,6 +128,11 @@ function deleteMovedFile($fileName)
               $this->Phase->set($this->data);
             }
 
+
+
+
+
+
             if ($error || $err)
             {
               //Something failed. Remove the image uploaded if any.
@@ -134,8 +142,12 @@ function deleteMovedFile($fileName)
               $this->validateErrors($this->Phase);
               $this->render();
             }
+
           }
+         $this->set('boards_list', $this->Phase->Boards->find('list', array('fields' => array('id', 'name'))));
+
 	}
+
 
  
 function edit($id = null) {
@@ -154,6 +166,16 @@ function edit($id = null) {
 		if (empty($this->data)) {
 			$this->data = $this->Phase->read(null, $id);
 		}
+	$borads_lists =array();
+
+               // $boards= $this->Phase->query('SELECT id,name FROM boards;');
+               
+
+           //$this->set('boards_list', $boards_list);
+		 $this->set('boards_list', $this->Phase->Boards->find('list' ,array('name','id')));
+	
+
+
 	}
 
 	function delete($id = null) {
