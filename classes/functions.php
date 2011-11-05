@@ -17,9 +17,9 @@ function talkboxheader(){
 ';
 print $header;
 }
-	function showword(){
+	function showword($bid){
 	global  $DBI;
-	$sql="SELECT phases,id FROM phases";
+	$sql="SELECT phases,id FROM phases WHERE boards_id='$bid'";
 	$result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
 	$cols=6;
 if(pg_num_rows($result)==0){
@@ -99,13 +99,14 @@ function savephase($hid){
 
 
 
-	function showpict(){
+	function showpict($bid){
 	global  $DBI;
 	$mode='main';
 	 $path_pics="../pics";
-        $sql="SELECT id,phases,paraphase,filename FROM phases";
+        $sql="SELECT id,phases,paraphase,filename FROM phases WHERE boards_id='$bid'";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
-       $cols=6;
+	echo $sql;
+	       $cols=6;
 	if(pg_num_rows($result)==0){
     	 die('No results returned!');
 }
@@ -144,18 +145,19 @@ function updateconfig($key,$value){
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 
 }
- function getphases($type){
+ function getphases($type,$bid){
 	 
  	global  $DBI;
 	$sql;
 	//print "Mode $type\r\n";
        if($type=='main'||$type=='tts'){
 
-	 $sql="SELECT id, phases,filename ,paraphase FROM phases";	
+		 $sql="SELECT id, phases,filename ,paraphase FROM phases WHERE boards_id='$bid'";	
      }
 	elseif($type=='history'){
-	$sql="SELECT id,phase AS phases FROM history";
+		$sql="SELECT id,phase AS phases FROM history";
 	}
+		echo $sql;
 	   $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $rows= pg_num_rows($result);
         pg_close($DBI);	
@@ -192,15 +194,15 @@ function updateconfig($key,$value){
 	}
 }
  
-	function showphases(){
+	function showphases($bid){
         global $cfg_level;
 	
         if($cfg_level==0){
-        $this->showword();	
+        $this->showword($bid);	
         }
         elseif($cfg_level==1){
-        $this->showpict();
-	$this->getphases('main');
+        $this->showpict($bid);
+	$this->getphases('main',$bid);
 		}
 	}
 	

@@ -1,6 +1,7 @@
 <?php
 include "functions.php";
 $tb= new talkbox();
+$board=0;
 ?>
 <html>
 <head>
@@ -21,7 +22,7 @@ $tb= new talkbox();
 <h2>
 Phases
 <?php
-$tb->showphases(); 
+$tb->showphases($board); 
 $tb->volctl();
 ?>
 
