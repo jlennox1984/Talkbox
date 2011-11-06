@@ -6,7 +6,7 @@
 		echo $this->Form->input('phases');
 		 echo $this->Form->input('paraphase');
 		echo "picure:", $this->Form->file('filename');
-		echo "Boards:" , $this->Form->select('boards.id' ,$boards_list);	
+		echo "Boards:" , $this->Form->select('boards_id' ,$boards_list);	
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
