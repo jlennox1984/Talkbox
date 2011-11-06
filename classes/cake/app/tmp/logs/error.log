@@ -76,3 +76,45 @@ HINT:  Perhaps you meant to reference the table alias "Boards". in [/var/www/dev
 LINE 1: SELECT "boards"."id" AS "boards__id", "boards"."name" AS "bo...
                ^
 HINT:  Perhaps you meant to reference the table alias "Boards".</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 05:37:43 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column Board.folders_id does not exist
+LINE 1: ..." AS "Board" LEFT JOIN "folders" AS "folders" ON ("Board"."f...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-05 05:37:43 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column Board.folders_id does not exist
+LINE 1: ..." AS "Board" LEFT JOIN "folders" AS "folders" ON ("Board"."f...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 05:37:43 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/boards/index.ctp, line 14]
+2011-11-05 05:52:52 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column fid.id does not exist
+LINE 1: ... AS "fid__type", "fid"."isopen" AS "fid__isopen", "fid"."id"...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-05 05:52:52 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column fid.id does not exist
+LINE 1: ... AS "fid__type", "fid"."isopen" AS "fid__isopen", "fid"."id"...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 05:52:52 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 1098]
+2011-11-05 05:52:53 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/boards/index.ctp, line 14]
+2011-11-05 05:56:02 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column id.id does not exist
+LINE 1: ...pe" AS "id__type", "id"."isopen" AS "id__isopen", "id"."id" ...
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-05 05:56:02 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column id.id does not exist
+LINE 1: ...pe" AS "id__type", "id"."isopen" AS "id__isopen", "id"."id" ...
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 05:56:02 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 1098]
+2011-11-05 05:56:02 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/boards/index.ctp, line 14]
+2011-11-05 05:56:55 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column folders.id does not exist
+LINE 1: ...__type", "folders"."isopen" AS "folders__isopen", "folders"....
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-05 05:56:55 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column folders.id does not exist
+LINE 1: ...__type", "folders"."isopen" AS "folders__isopen", "folders"....
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 05:56:55 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 1098]
+2011-11-05 05:56:55 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/boards/index.ctp, line 14]
+2011-11-05 06:04:31 Warning: Warning (2): pg_query() [http://php.net/function.pg-query]: Query failed: ERROR:  column folders.board_id does not exist
+LINE 1: ...__type", "folders"."isopen" AS "folders__isopen", "folders"....
+                                                             ^ in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo/dbo_postgres.php, line 167]
+2011-11-05 06:04:31 Warning: Warning (512): <span style="color:Red;text-align:left"><b>SQL Error:</b> ERROR:  column folders.board_id does not exist
+LINE 1: ...__type", "folders"."isopen" AS "folders__isopen", "folders"....
+                                                             ^</span> in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 684]
+2011-11-05 06:04:31 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/cake/libs/model/datasources/dbo_source.php, line 1098]
+2011-11-05 06:04:31 Warning: Warning (2): Invalid argument supplied for foreach() in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/views/boards/index.ctp, line 14]
+2011-11-05 23:30:28 Warning: Warning (2): Missing argument 2 for PhasesController::generateUniqueFilename(), called in /var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php on line 111 and defined in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 12]
+2011-11-05 23:39:28 Warning: Warning (2): Missing argument 2 for PhasesController::generateUniqueFilename(), called in /var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php on line 111 and defined in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 12]
+2011-11-05 23:39:55 Warning: Warning (2): Missing argument 2 for PhasesController::generateUniqueFilename(), called in /var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php on line 111 and defined in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 12]

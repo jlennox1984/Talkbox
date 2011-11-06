@@ -1,14 +1,18 @@
 <?php
-class BoardsController extends AppController {
+  class BoardsController extends AppController {
 
 	var $name = 'Boards';
-	var $scaffold;
-
-	function add(){
-	$foldoridold= $this->boards->folders->find->first() with order: id=>DESC; 	
+	
+	
+	function index() {
+                $this->Boards->recursive = 0;
+                $this->set('Boards', $this->paginate());
+	}
+/**	function add(){
+	$foldoridold= $this->boards->folders->find->first(); 	
 		$fid=  $foldoridold++;
 			
 		}
-	
+*/	
 }
 ?>
