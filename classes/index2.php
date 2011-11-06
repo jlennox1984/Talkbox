@@ -174,13 +174,17 @@ $ds->downloadMP3();
 		
 	# 	$constr="dbname=speachbox  user=root  password=5373988";
 	#	$DBI =pg_connect($constr);
-		$query = "SELECT orderno, parentid, title, name,url,img,pane FROM folders";
+		$query = "SELECT folderid,orderno, parentid, title, name,url,img,pane FROM folders";
 		$result = pg_exec($DBI,$query) or die ("Fail Query");
 		while ($row = pg_fetch_array($result)) {
 		extract($row);
-		echo("
+	/*	echo("
 	     d.add($orderno,$parentid,'$name','$url','$title','$img','$pane','$pane');
-	");
+	");*/
+	echo("
+             d.add($folderid,$parentid,'$name','$url','$title','$img','$pane','$pane');
+		");
+
 }
 pg_close();
 ?>

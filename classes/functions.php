@@ -105,7 +105,7 @@ function savephase($hid){
 	 $path_pics="../pics";
         $sql="SELECT id,phases,paraphase,filename FROM phases WHERE boards_id='$bid'";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
-	echo $sql;
+	// echo $sql;
 	       $cols=6;
 	if(pg_num_rows($result)==0){
     	 die('No results returned!');
@@ -113,10 +113,12 @@ function savephase($hid){
 
 echo "<table>";
 $i = 0;//indexing variable
-$path_pics="http://demo.mwds.ca/talkbox/pics/";
+ //GET $path_pics
+	$path_pics=$this->getconfig(path_pics);
+//$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\"  onclick=sayit('{$row['id']},\'main'/)>
+     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},\'main'/)>
 		<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode')>{$row['phases']}</a></td></table>
 			</td>\r\n";
      if($i%$cols == $cols -1)
@@ -157,7 +159,7 @@ function updateconfig($key,$value){
 	elseif($type=='history'){
 		$sql="SELECT id,phase AS phases FROM history";
 	}
-		echo $sql;
+	//	echo $sql;
 	   $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $rows= pg_num_rows($result);
         pg_close($DBI);	
@@ -237,4 +239,30 @@ echo "<table><tr>";
 	
 
 }
+
+        function showboardindex(){
+        global  $DBI;
+        $sql="SELECT name,id FROM boards";
+        $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
+        $cols=6;
+if(pg_num_rows($result)==0){
+     die('No results returned!');
 }
+	print "<table border='0'><tr><th> Borad </th><th> Delete </th><th> Edit </th>";
+$i = 0;//indexing variable
+	
+while($row = pg_fetch_array($result)){
+     if($i%$cols == 0)echo "<tr>\r\n";
+    	 print "<td>{$row['name']} </td> <td> <a href='deleteboard.php?bid={$row['id']}'> Delete <a/>  </td>
+			<td> <a href='editborad.php?bid={$row['id']}'> Edit</a>\r\n";
+    	 if($i%$cols == $cols -1)echo "</tr>\r\n";
+	$i++;
+}
+
+	if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
+	echo "</tr></table>";
+	}
+
+}
+
+?>
