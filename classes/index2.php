@@ -273,14 +273,6 @@ pg_close();
 </div>
 -->
 <div id="southContent"> 
-<center><p>Talk BOX</p></center>
-<hr>
-
-<form name="Talkbox" method="post" action="<?php $_SERVER['self']?>">
-<input name="tts1" value="<?php echo $tts1?>">
-<input type="submit" name="submit" value="TALK">
-</form>
-<?php echo $ds->getPlayerDiv() /*Only include one time, even if you have many class instances. This div is needed and can be included anywhere on your page. */ ?>
 </div>
 
 <!-- END DATASOURCES -->
@@ -308,7 +300,7 @@ paneCenter.addContent( new DHTMLSuite.paneSplitterContentModel( { id: 'center',h
 //paneCenter.addContent( new DHTMLSuite.paneSplitterContentModel( { id:'center3', htmlElementId:'center3',title:'center pane',tabTitle: 'Pane splitter' } ) );
 
 
-paneModel.addPane(paneSouth);
+//paneModel.addPane(paneSouth);
 //paneModel.addPane(paneEast);
 paneModel.addPane(paneNorth);
 paneModel.addPane(paneWest);
