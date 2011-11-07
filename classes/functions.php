@@ -13,7 +13,7 @@ function talkboxheader(){
                 <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
                 <link rel="stylesheet" type="text/css" href="assets/style.css"></link> 
-        
+            <script type="text/javascript" src="../js/wtoottip.js"></script>        
 ';
 print $header;
 }
