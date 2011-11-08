@@ -36,7 +36,7 @@ $tb->volctl();
 </script>
 
 <input type="button" onclick="loadvoicebox();"  value="TALK"/>
-<iframe id='voiceframe'/>
+<iframe id='voiceframe' class="main"/>
 <div id="slider"></div>
 </body>
 
