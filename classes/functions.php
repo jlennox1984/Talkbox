@@ -7,13 +7,21 @@ class talkbox{
 function talkboxheader(){
 		$header='<link rel="stylesheet" type="text/css" href="cake/css/cake.generic.css" />
         <link rel="stylesheet" type="text/css" href="css/talkbox.css" />
-         <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">      
+         <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">
+            <script type="text/javascript" src="../js/jquery-1.6.3.js "></script>          
         <script type="text/javascript" src="../js/talkbox.js"></script>
+	<script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
-                <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
+        <script type="text/javascript" src="../js/dhtml-suite-for-applications-without-comments.js"</script>
+	        <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
-                <link rel="stylesheet" type="text/css" href="assets/style.css"></link> 
-            <script type="text/javascript" src="../js/wtoottip.js"></script>        
+                <link rel="stylesheet" type="text/css" href="assets/style.css"></link>	
+		<script type="text/javascript">
+			var tooltipObj = new DHTMLSuite.dynamicTooltip(); // Create ONE tooltip object.
+	</script> 
+
+
+ 
 ';
 print $header;
 }
@@ -39,6 +47,16 @@ $i++;
 if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 echo "</tr></table>";
 }
+function getboardselect($hid){
+	global $DBI;
+	$SQL="SELECT  id,name FROM boards";
+	print "<tr><td><select id='item$hid'>\r\n";
+	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+	while($row = pg_fetch_array($result)){
+		print "<option value='".$row['id']."'> ".$row['name']." </optiom>";
+	}	
+	print "</td>\r\n <td>  <input type=\"button\"  value=\"COMMIT\" onclick=\"savephase($hid);\">  </button> \r\n</td></tr> ";
+}
 function showhistory(){ 
         global  $DBI;
 	$mode='history';
@@ -56,15 +74,15 @@ while($row = pg_fetch_array($result)){
 		$mode=$row['type'];
 		$id=$row['id'];
 	     if($i%$cols == 0)echo "<tr>\r\n";
-	     print "<td><table><tr><td>\r\n
+     	print "<td><table><tr><td>\r\n
 			<a href='#'  onclick=sayit('$id',$mode)>{$row['phase']}</a></td>\r\n
 				</tr>
 				";
 			
 				if($mode=='tts'){
-					print"<tr><td class='msgcommon' id='$id'> <a href='#' onclick='savephase($id);'>Save phase as common Phase</a>
-						 </td></tr>";
-						}
+				// print"<tr><td class='msgcommon' id='$id'> <a href='#' onclick='savephase($id);'>Save phase as common Phase</a>
+		$this->getboardselect($id);					
+}
 				print "</table> ";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
@@ -76,7 +94,7 @@ $this->getphases('history');
 
 }
 
-function savephase($hid){
+function savephase($hid,$board){
 //hid=history id
 
 
@@ -87,7 +105,7 @@ function savephase($hid){
 			$phase=$row['phase'];
 			$date=date('Y-m-d H:i:s');
 			//INSERT IN TO MAIN PHASES//
-			$SQL="INSERT INTO phases(phases,modified,created) VALUES('$phase','$date','$date')";
+			$SQL="INSERT INTO phases(phases,boards_id,modified,created) VALUES('$phase','$board','$date','$date')";
 			 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 			//UPDATE MODE IN HISTORY//
 			$SQL="UPDATE history SET type='main' where id='$hid'";
