@@ -23,3 +23,85 @@ h2 { text-align:center; font:normal 150% Georgia; }
 	font-family:"Times New Roman", Times, serif;
 	font-size: 10px;
 }
+.
+
+/**
+BUBBLE POPUP
+**/
+  .bubbleInfo {
+            position: relative;
+            top: 150px;
+            left: 100px;
+            width: 500px;
+        }
+        .trigger {
+            position: absolute;
+        }
+
+        /* Bubble pop-up */
+
+        .popup {
+                position: absolute;
+                display: none;
+                z-index: 50;
+                border-collapse: collapse;
+        }
+
+        .popup td.corner {
+                height: 15px;
+                width: 19px;
+        }
+
+        .popup td#topleft { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-1.png); }
+        .popup td.top { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-2.png); }
+        .popup td#topright { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-3.png); }
+        .popup td.left { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-4.png); }
+        .popup td.right { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-5.png); }
+        .popup td#bottomleft { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-6.png); }
+        .popup td.bottom { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-7.png); text-align: center;}
+        .popup td.bottom img { display: block; margin: 0 auto; }
+        .popup td#bottomright { background-image: url(http://static.jqueryfordesigners.com/demo/images/coda/bubble-8.png); }
+
+        .popup table.popup-contents {
+                font-size: 12px;
+                line-height: 1.2em;
+                background-color: #fff;
+                color: #666;
+                font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+                }
+
+        table.popup-contents th {
+                text-align: right;
+                text-transform: lowercase;
+                }
+
+        table.popup-contents td {
+                text-align: left;
+                }
+
+
+#DHTMLSuite_ajax_tooltipObj .DHTMLSuite_ajax_tooltip_arrow{	/* Left div for the small arrow */
+	
+	width:20px;
+	position:absolute;
+	left:0px;
+	top:0px;
+	background-repeat:no-repeat;
+	background-position:center left;
+	z-index:1000005;
+	height:60px;
+}
+
+#DHTMLSuite_ajax_tooltipObj .DHTMLSuite_ajax_tooltip_content{
+	border:2px solid #317082;	/* Border width */
+	left:18px;	/* Same as border thickness */
+	top:0px;
+	position:absolute;
+	width:300px;	/* Width of tooltip content */
+	height:400px;	/* Height of tooltip content */
+	background-color:#FFF;	/* Background color */
+	padding:5px;	/* Space between border and content */
+	font-size:0.8em;	/* Font size of content */
+	overflow:auto;	/* Hide overflow content */
+	z-index:1000001;
+}
