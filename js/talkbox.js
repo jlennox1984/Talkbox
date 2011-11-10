@@ -29,6 +29,8 @@ function savevol(str){
 //if (httpObject != null) {
 	httpObject.open("GET", "savevol.php?vol="+str)
 	httpObject.send(null);
+	// alert(str);
+	 document.getElementById('volind').innerHTML=+str;
 
 //	}
 }
