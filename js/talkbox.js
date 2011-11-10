@@ -24,6 +24,14 @@ function sayit(id,mode){
             return null;
         }
     }
+	function so_clearInnerHTML(obj) {
+	// perform a shallow clone on obj
+	nObj = obj.cloneNode(false);
+	// insert the cloned object into the DOM before the original one
+	obj.parentNode.insertBefore(nObj,obj);
+	// remove the original object
+	obj.parentNode.removeChild(obj);
+}
 function savevol(str){
 	httpObject = getHTTPObject();
 //if (httpObject != null) {
@@ -39,11 +47,15 @@ function savephase(hid){
 	 httpObject = getHTTPObject();
         var sel = document.getElementById("item"+hid);
 	var board=sel.options[sel.selectedIndex].value;
-	alert(board);
+//	alert(board);
 	var methods="?hid="+hid+"&board="+board;
-	alert(methods);
+//	alert(methods);
 	httpObject.open("GET", "savephase.php"+methods);
-        httpObject.send(null);
+	 document.getElementById('commit'+hid).innerHTML="SAVED";
+	
+	document.getElementById('button'+hid).style.visibility='hidden'; // hide 
+
+       httpObject.send(null);
 	
 }
 

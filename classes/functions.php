@@ -50,12 +50,17 @@ echo "</tr></table>";
 function getboardselect($hid){
 	global $DBI;
 	$SQL="SELECT  id,name FROM boards";
-	print "<tr><td><select id='item$hid'>\r\n";
+	print "</tr><td> <div id=\"commit$hid\" class=\"commitmsg\"> <select id='item$hid'>\r\n";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 	while($row = pg_fetch_array($result)){
 		print "<option value='".$row['id']."'> ".$row['name']." </optiom>";
 	}	
-	print "</td>\r\n <td>  <input type=\"button\"  value=\"COMMIT\" onclick=\"savephase($hid);\">  </button> \r\n</td></tr> ";
+	print "</td>\r\n <td>  <div id=\"commit$hid\" class=\"commitmsg\">  
+<input  id=\"button$hid\"  type=\"button\"  value=\"COMMIT\" onclick=\"savephase($hid);\">  </button>  
+\r\n </div>
+		</td>
+	</div>
+</tr> ";
 }
 function showhistory(){ 
         global  $DBI;
@@ -89,7 +94,7 @@ $i++;
 }
 
 if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
-echo "</tr></table>";
+//echo "</tr></table>";
 $this->getphases('history');
 
 }
