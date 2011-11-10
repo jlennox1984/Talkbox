@@ -240,16 +240,15 @@ $i=1;
 //Get vol key
 $vol=0;
 $vol=$this->getconfig('vol');
- 
-print "<h2> Volume: $vol</h2>";
+print "<h2> Volume: <div id=\"volind\"> $vol</div> </h2>";
 echo "<table><tr>";
  	for ($i=1; $i <=10;$i++){
 	echo "<td>";
 		$val=$i*10;
 		if($vol==$i){	
-			echo " $val <input type='radio' name='volctl' value='$val'  onclick='savevol($i)' checked> </td>";
+			echo " $i <input type='radio' name='volctl' value='$val'  onclick='savevol($i)' checked> </td>";
 		}else{
-			 echo " $val <input type='radio' name='volctl' value='$val'   onclick='savevol($i)'> </td>";
+			 echo " $i <input type='radio' name='volctl' value='$val'   onclick='savevol($i)'> </td>";
 		}
 		
 	}
