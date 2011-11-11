@@ -12,7 +12,6 @@ function talkboxheader(){
         <script type="text/javascript" src="../js/talkbox.js"></script>
 	<script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
-        <script type="text/javascript" src="../js/dhtml-suite-for-applications-without-comments.js"</script>
 	        <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
                 <link rel="stylesheet" type="text/css" href="assets/style.css"></link>	
@@ -39,7 +38,7 @@ $i = 0;//indexing variable
 
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     print "<td><a href='#' onclick=sayit('{$row['id']}')>{$row['phases']}</a></td>'\r\n";
+     print "<td><a href='#' onclick=sayit('{$row['id']}',$bid')>{$row['phases']}</a></td>'\r\n";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
 $i++;
 }
@@ -65,7 +64,7 @@ function getboardselect($hid){
 function showhistory(){ 
         global  $DBI;
 	$mode='history';
-        $sql="SELECT phase,id,type FROM history";
+        $sql="SELECT phase,id,type FROM history ORDER BY id";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
         $cols=6;
 if(pg_num_rows($result)==0){
@@ -80,7 +79,7 @@ while($row = pg_fetch_array($result)){
 		$id=$row['id'];
 	     if($i%$cols == 0)echo "<tr>\r\n";
      	print "<td><table><tr><td>\r\n
-			<a href='#'  onclick=sayit('$id',$mode)>{$row['phase']}</a></td>\r\n
+			<a href='#'  onclick=sayit('$id','$mode')>{$row['phase']}</a></td>\r\n
 				</tr>
 				";
 			
@@ -141,9 +140,15 @@ $i = 0;//indexing variable
 //$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
-     print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},\'main'/)>
-		<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode')>{$row['phases']}</a></td></table>
+	if($row['filename'] !=''){
+
+     		print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},'$mode','$bid')>
+			<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></table>
 			</td>\r\n";
+		} else{
+		 print " <td> <table border='0'> <tr><td> <a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></tr></table></td>\r\n";
+		}
+
      if($i%$cols == $cols -1)
 	echo "</tr>\r\n";
 $i++;
@@ -175,6 +180,7 @@ function updateconfig($key,$value){
  	global  $DBI;
 	$sql;
 	//print "Mode $type\r\n";
+	print "<div class='output$bid'>";
        if($type=='main'||$type=='tts'){
 
 		 $sql="SELECT id, phases,filename ,paraphase FROM phases WHERE boards_id='$bid'";	
@@ -214,9 +220,10 @@ function updateconfig($key,$value){
         $verb;
   
      	
-                print "<input type='hidden' class='phases' id='{$row[0]}' value='{$verb}' />\r\n";
+                print "<input type='hidden' name='phases' id='{$row[0]}' value='{$verb}' />\r\n";
 	
 	}
+
 }
  
 	function showphases($bid){
@@ -237,6 +244,7 @@ function updateconfig($key,$value){
 	if($phase !=''){
 	$SQL="INSERT INTO history (phase,time,type) VALUES ('$phase','$TS','$mode')";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+	print $SQL;
 }
 	}
 function volctl(){
