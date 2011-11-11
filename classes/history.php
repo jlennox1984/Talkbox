@@ -1,6 +1,7 @@
 <?php
 include "functions.php";
 $tb= new talkbox();
+$board=9999;
 ?>
 <html>
 <head>
@@ -21,8 +22,11 @@ $tb= new talkbox();
 	<?php
 		$tb->volctl();
 		$tb->showhistory();
-	?>
-<iframe id='voiceframe'/>
+	?> 
+<hr>
+
+<iframe id='voiceframe<?php echo $board?>' class="main"/>
+
 <div id="slider"></div>
 
 </body>
