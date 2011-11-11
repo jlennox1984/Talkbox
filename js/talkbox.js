@@ -1,18 +1,20 @@
-function loadvoicebox(clas){
+function loadvoicebox(board){
+
 
 	var mode='tts'
 	 var str= document.getElementById("tts1").value;
- 	document.getElementById('voiceframe').src='engine.php?str=' +str+'&mode='+mode;
- 	document.getElementById('voiceframe').style.width='0px';
-	 document.getElementById('voiceframe').style.height='0px';
-	 document.getElementById('voiceframe').style.display='block';	
+	//alert (str);
+ 	document.getElementById('voiceframe'+board).src='engine.php?str=' +str+'&mode='+mode;
+ 	document.getElementById('voiceframe'+board).style.width='0px';
+	 document.getElementById('voiceframe'+board).style.height='0px';
+	 document.getElementById('voiceframe'+board).style.display='block';	
 }
-function sayit(id,mode){
+function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
-	 document.getElementById('voiceframe').src='engine.php?mode='+mode+'&str='+str;
-	 document.getElementById('voiceframe').style.width='0px';
- 	document.getElementById('voiceframe').style.height='0px';
-	 document.getElementById('voiceframe').style.display='block';
+	 document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
+	 document.getElementById('voiceframe'+board).style.width='0px';
+ 	document.getElementById('voiceframe'+board).style.height='0px';
+	 document.getElementById('voiceframe'+board).style.display='block';
  
 }
  // Get the HTTP Object
@@ -37,7 +39,7 @@ function savevol(str){
 //if (httpObject != null) {
 	httpObject.open("GET", "savevol.php?vol="+str)
 	httpObject.send(null);
-	// alert(str);
+//	 alert(str);
 	 document.getElementById('volind').innerHTML=+str;
 
 //	}
