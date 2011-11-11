@@ -12,8 +12,6 @@ include 'config.inc.php';
 
 
 	<title>MWDS talkbox Alpha 1.0</title>
-   <link href='../css/servicedesk.css' rel='stylesheet' media='screen' type='text/css'>
-	<link rel="stylesheet" href="css/demos.css" media="screen" type="text/css">
 	<style type="text/css">
 	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
 	h1{

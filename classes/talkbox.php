@@ -28,7 +28,7 @@ $tb->volctl();
 
 <hr>
 <form name="Talkbox" method="post" action="">
-<input name="tts1"  id="tts1" value="" onblur="loadvoicebox();"/>
+<input name="tts1"  id="tts1" value="" onblur="loadvoicebox(0);"/>
 <script type="text/javascript">
 	new AutoComplete('tts1', 'assets/ac.php?s=', {
 		delay: 0.25
@@ -36,7 +36,7 @@ $tb->volctl();
 </script>
 
 <input type="button" onclick="loadvoicebox();"  value="TALK"/>
-<iframe id='voiceframe' class="main"/>
+<iframe id='voiceframe<?php echo $board?>' class="main"/>
 <div id="slider"></div>
 </body>
 
