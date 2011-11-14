@@ -61,7 +61,7 @@ function getboardselect($hid){
 	</div>
 </tr> ";
 }
-function showhistory(){ 
+function showhistory($board){ 
         global  $DBI;
 	$mode='history';
         $sql="SELECT phase,id,type FROM history ORDER BY id";
@@ -79,7 +79,7 @@ while($row = pg_fetch_array($result)){
 		$id=$row['id'];
 	     if($i%$cols == 0)echo "<tr>\r\n";
      	print "<td><table><tr><td>\r\n
-			<a href='#'  onclick=sayit('$id','$mode')>{$row['phase']}</a></td>\r\n
+			<a href='#'  onclick=sayit('$id','$mode','$board')>{$row['phase']}</a></td>\r\n
 				</tr>
 				";
 			
@@ -168,6 +168,14 @@ function getconfig($key){
 }
 return $value;
 }
+function getbroardname($bid){
+global $DBI;
+	 $SQL="SELECT name FROM boards WHERE id=$bid";
+         $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($connection));
+                 $name=pg_fetch_result($result,0,0);
+return $name;
+}
+
 
 function updateconfig($key,$value){
  global $DBI;

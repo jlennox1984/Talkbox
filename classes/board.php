@@ -2,6 +2,8 @@
 include "functions.php";
 $tb= new talkbox();
 $board=$_REQUEST['bid'];
+$name=$tb->getbroardname($board);
+
 ?>
 <html>
 <head>
@@ -14,18 +16,25 @@ $board=$_REQUEST['bid'];
         <?php
 	// Show scripts 
 	$tb->talkboxheader();
-?>
+?> 
 	
 </head>
 
 <body>
-<h2>
-Phases
+<?php if($board !=20){
+	echo '<div ALIGN="right" STYLE="color: #000009 "><a href="#" onclick="return popitup(\'board.php?bid=20\');"> VERBS</a> </div>
+';
+}
+?>
+<h2> <?php echo $name?> </h2>
+
 <?php
+
+
 $tb->showphases($board); 
 $tb->volctl();
 ?>
-
+<!--<a href=# onclick='storyboaron();'> Story borad on </a> -->
 <hr>
 <form name="Talkbox" method="post" action="">
 <input name="tts1"  id="tts1" value="" onblur="loadvoicebox(<?php echo $board?>);"/>
@@ -36,6 +45,7 @@ $tb->volctl();
 </script>
 
 <input type="button" onclick="loadvoicebox(<?php echo $board?>);"  value="TALK"/>
+
 <iframe id='voiceframe<?php echo $board?>' class="main"/>
 
 <div id="slider"></div>
