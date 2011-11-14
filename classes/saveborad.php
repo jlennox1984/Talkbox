@@ -27,16 +27,17 @@ $TS=date('Y-m-d H:i:s');
 	
 		//INSERT FOLDER//
 		$sql= "INSERT INTO folders (orderno,parentid,name,title,url,pane) values(
-		'$NEWorderno','7','$name','$name','./board.php?bid=$boardid','center')";
+		'$NEWorderno','7','$name','$name','./wrapperboard.php?bid=$boardid','center')";
 		$result = pg_query($DBI, $sql) or die("Error in query: $sql." . pg_last_error($connection));
 		
-		if($debug==0){
+		if($debug==1){
 	echo 'name=' .$name;
 	echo "last folder id=".$lastfid;
 	echo "new Folder id =".$NEWFID;
 	echo "time stamp= " .$TS;
 	echo "Borard ID= " .$boardid;	
 	echo "SQL EQ \r\n" .$sql;
-	}
+	}else
+	header("location:boards.php");
 ?>
 	
