@@ -21,7 +21,7 @@ $board=9999;
 
 	<?php
 		$tb->volctl();
-		$tb->showhistory();
+		$tb->showhistory($board);
 	?> 
 <hr>
 
