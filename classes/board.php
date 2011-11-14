@@ -22,7 +22,7 @@ $name=$tb->getbroardname($board);
 
 <body>
 <?php if($board !=20){
-	echo '<div ALIGN="right" STYLE="color: #000009 "><a href="#" onclick="return popitup(\'board.php?bid=20\');"> VERBS</a> </div>
+	echo '<div ALIGN="right" STYLE="color: #00000000; margin-right: 3cm; "><a href="#" onclick="return popitup(\'board.php?bid=20\');"> VERBS</a> </div>
 ';
 }
 ?>
