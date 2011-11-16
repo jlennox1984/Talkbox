@@ -12,7 +12,7 @@ include 'tts/googleTTSphp.class.php';
 include  'functions.php';
 $tb = new talkbox; 
 $vol=$tb->getconfig('vol') *10;
-$str=$_REQUEST['str'];
+$str=addslashes($_REQUEST['str']);
 $mode=$_REQUEST['mode'];
 if($mode=='main'||$mode=='tts'){
 	$tb->storehisory($str,$mode);
