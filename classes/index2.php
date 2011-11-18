@@ -93,6 +93,8 @@ border:0px;
 // Include the class for tts
 include 'tts/googleTTSphp.class.php';
 
+// TALKBOX CLASSES AND VARABLES
+$vol=$talkbox->getconfig('vol') *10;
 
 // Start the HTML instance, this provides features such as javascript implementions and functions already configured. You may also use GoogleTTS if you do not want html specific features.
 $ds = new GoogleTTSHTML;
@@ -101,6 +103,10 @@ $ds = new GoogleTTSHTML;
 $ds->setStorageFolder('mp3_tts/');
 
 
+//SET VOLUME
+$ds->setVol($vol);
+//SET URL
+$ds->setUrl($TBUrl);
 // Set language.
 $ds->setLang('en'); // Not needed, because en is default.
 
