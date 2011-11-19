@@ -12,7 +12,18 @@ include 'tts/googleTTSphp.class.php';
 include  'functions.php';
 $tb = new talkbox; 
 $vol=$tb->getconfig('vol') *10;
-$str=addslashes($_REQUEST['str']);
+$straw=$_REQUEST['str'];
+$str;
+if($straw=='whattime'){
+    $date = new DateTime(); // this will be a database request
+    $str= date_format($date, 'g:i a');
+	}
+	elseif($straw=="get date"){
+		$str=date('l jS \of F Y ');
+	}else{
+	$str=addslashes($straw);
+}
+	
 $mode=$_REQUEST['mode'];
 if($mode=='main'||$mode=='tts'){
 	$tb->storehisory($str,$mode);
