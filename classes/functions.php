@@ -97,7 +97,12 @@ if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 $this->getphases('history');
 
 }
+function updateconfig($key,$value){
+	global $DBI;
+		$SQL="UPDATE config  SET value='$value'  WHERE key='$key'";
+		$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 
+}
 function savephase($hid,$board){
 //hid=history id
 
@@ -130,8 +135,39 @@ function recordoff(){
 global $DBI;
         $SQL="UPDATE config SET value='OFF' WHERE key='record'";
          $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
-       }
- 
+	//RESET ORDER//
+	$SQL="UPDATE config SET value='0' WHERE key='recordorder'";
+	$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+        
+      }
+
+function phasewriter($str){
+global $DBI;
+	//GET VARS//
+	$order=$this->getconfig('recordorder');
+	$series=$this->getconfig('recordseries');
+	$ts=date('Y-m-d H:i:s');
+	if($str !=''){
+		//SERIES LOGIC 
+		$NEWseries;	
+			if($order==0){
+				$NEWseries=$series+1;
+				$this->updateconfig('recordseries',$NEWseries);
+		}else{
+			$NEWseries=$series;
+		}
+	
+	
+			
+		$NEWorder=$order+1;
+	
+		$this->updateconfig('recordorder',$NEWorder);
+		//SQL INSERT
+		$SQL="INSERT INTO storyboard (orderno,phase,series,time) values('$NEWorder','$str','$NEWseries','$ts')";	
+ 		$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+	}
+}
+
 	function showpict($bid){
 	global  $DBI;
 	$mode='main';
@@ -196,12 +232,7 @@ return $name;
 }
 
 
-function updateconfig($key,$value){
- global $DBI;
-	$SQL="UPDATE config SET value = $value WHERE key='$key'";
-	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 
-}
  function getphases($type,$bid){
 	 
  	global  $DBI;
