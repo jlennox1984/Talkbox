@@ -120,10 +120,22 @@ function savephase($hid,$board){
 
 
 
+function recordon(){
+global $DBI;
+	$SQL="UPDATE config SET value='ON' WHERE key='record'";
+	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 
+}
+function recordoff(){
+global $DBI;
+        $SQL="UPDATE config SET value='OFF' WHERE key='record'";
+         $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+       }
+ 
 	function showpict($bid){
 	global  $DBI;
 	$mode='main';
+	$recmode=$this->getconfig(record);
 	 $path_pics="../pics";
         $sql="SELECT id,phases,paraphase,filename FROM phases WHERE boards_id='$bid'";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
@@ -156,6 +168,13 @@ $i++;
 
 if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 print "</tr></table>\r\n";
+	if($recmode=='OFF'){
+print "<div id=\"recmods\" align=\"right\" style=\"color: #00000000; font-size: 7px; margin-right: 3cm; \"><a href=\"#\" onclick=\"return recordon();\"> RECORD ON<a> </div>";
+          }
+	elseif($recmode=='ON'){
+	print "<div id=\"recmods\" align=\"right\" style=\"color: #00000000; font-size: 7px; margin-right: 3cm; \"><a href=\"#\" onclick=\"return recordoff();\"> RECORD OFF<a> </div>";
+	
+ 	}
 
 }
 function getconfig($key){
