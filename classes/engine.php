@@ -28,12 +28,12 @@ $mode=$_REQUEST['mode'];
 if($mode=='main'||$mode=='tts'){
 	$tb->storehisory($str,$mode);
 }
-$recordmod=$tb->getconfig('record')
+/* $recordmod=$tb->getconfig('record')
 	if($recordmod=='ON'){
 	// $tb->logwrite($str);
 	
 	}
-	
+*/	
 // Start the HTML instance, this provides features such as javascript implementions and functions already configured. You may also use GoogleTTS if you do not want html specific features.
 $ds = new GoogleTTSHTML;
 
