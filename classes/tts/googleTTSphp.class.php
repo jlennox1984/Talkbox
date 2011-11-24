@@ -356,11 +356,16 @@ class GoogleTTSHTML extends GoogleTTS{
         	});
 
 
+	events: {
+   onComplete: donetalking();
 
-        });
-
-        -->
-        </script>
+        }
+	function donetalking(){
+	window.close();
+        }
+	-->
+})
+	</script>
         ';
 
 

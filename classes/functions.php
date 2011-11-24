@@ -351,6 +351,86 @@ while($row = pg_fetch_array($result)){
 	echo "</tr></table>";
 	}
 
-}
+	function showstoryboard(){
+	global $DBI;
+	$board="33333";	
+	//CREATE Table
+		 print "
+        <table>\b
+        <tr><th>phase</th><th>method</th>\n 
+        <tr>\n
+		";      
+		
+	//GET SERIES
+	$SQL="SELECT  DISTINCT ON (series) series,time FROM storyboard";
+	$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+		while($row= pg_fetch_array($result)){
+			$seriesno=$row['0'];
+		//GET PHASES AND BUILD INTO A STRING // 
+			$SQL="SELECT phase FROM storyboard WHERE series='$seriesno' ORDER BY orderno ASC";
+		//	print $SQL ."\n";
+			$result1 = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+			$array=pg_fetch_all($result1);
+		//	print_r($array); 
+			print "
+			<tr id=\"row$seriesno\">\n
+			<td>"; 
+				for($i = 0; $i < count($array); $i++){
+				$output= implode(" ", $array[$i]);
+			
 
+			print  $output. " ";
+			}
+				print" </td>\n
+			<td> <table> <tr><td>
+				<a href='#' onclick=\"sayit('$seriesno','main','$board');\"> replay</a></td></tr>\n
+				<tr><td> <a href='#' onclick=\"deletestory('$seriesno');\"> Delete</a></td></tr></table></td></tr>
+			";}
+	
+				
+			
+		 
+	}
+ function showstoryboardhidden(){
+        global $DBI;
+        //CREATE Table
+            
+
+        //GET SERIES
+        $SQL="SELECT  DISTINCT ON (series) series,time FROM storyboard";
+        $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+                while($row= pg_fetch_array($result)){
+                        $seriesno=$row['0'];
+                //GET PHASES AND BUILD INTO A STRING // 
+                        $SQL="SELECT phase FROM storyboard WHERE series='$seriesno' ORDER BY orderno ASC";
+                //      print $SQL ."\n";
+                        $result1 = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+                        $array=pg_fetch_all($result1);
+                //      print_r($array);
+			print  "<input type='hidden' value =\""; 
+                                for($i = 0; $i < count($array); $i++){
+                                $output= implode(" ", $array[$i]);
+
+
+                       			 print   $output. " ";
+                        	}
+			print "\" id=\"$seriesno\">\n";	
+ 			 }
+
+
+
+
+        }
+
+function deletestoryboard($series){
+	global $DBI;
+	
+		$SQL="DELETE FROM storyboard WHERE series=$series";
+		print $SQL;	
+	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL" . pg_last_error($DBI));
+
+
+
+	}
+}
 ?>
