@@ -305,7 +305,7 @@ ALTER SEQUENCE history_id_seq OWNED BY history.id;
 -- Name: history_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('history_id_seq', 717, true);
+SELECT pg_catalog.setval('history_id_seq', 819, true);
 
 
 --
@@ -380,7 +380,7 @@ ALTER SEQUENCE phases_id_seq OWNED BY phases.id;
 -- Name: phases_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('phases_id_seq', 67, true);
+SELECT pg_catalog.setval('phases_id_seq', 76, true);
 
 
 SET default_with_oids = true;
@@ -394,7 +394,8 @@ CREATE TABLE storyboard (
     orderno integer NOT NULL,
     phase text,
     "time" timestamp without time zone,
-    series integer
+    series integer,
+    status text
 );
 
 
@@ -425,7 +426,7 @@ ALTER SEQUENCE storyboard_id_seq OWNED BY storyboard.id;
 -- Name: storyboard_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('storyboard_id_seq', 47, true);
+SELECT pg_catalog.setval('storyboard_id_seq', 92, true);
 
 
 SET search_path = folders, pg_catalog;
@@ -528,10 +529,10 @@ COPY boards (id, name, fid, created, modified) FROM stdin;
 
 COPY config (id, key, value) FROM stdin;
 2	path_pics	http://development.mwds.ca/talkbox2/pics/
+1	vol	6
+4	recordseries	14
 3	record	OFF
 5	recordorder	0
-1	vol	7
-4	recordseries	4
 \.
 
 
@@ -1026,6 +1027,108 @@ COPY history (id, phase, "time", type) FROM stdin;
 715	Ouch	2011-11-24 03:53:59	main
 716	British Columbia	2011-11-24 03:54:27	main
 717	Lego	2011-11-24 03:56:02	main
+718	Juice	2011-11-24 05:24:32	main
+719	Juice	2011-11-24 05:24:50	main
+720	And	2011-11-24 05:24:56	main
+721	Banana	2011-11-24 05:24:59	main
+722	And	2011-11-24 05:25:05	main
+723	Cherry	2011-11-24 05:25:08	main
+724	Juice And Banana And Cherry	2011-11-24 05:25:20	main
+725	between	2011-11-24 05:33:49	main
+726	Ottawa	2011-11-24 05:33:53	main
+727	And	2011-11-24 05:33:59	main
+728	 Montreal	2011-11-24 05:34:04	main
+729	between Ottawa And  Montreal	2011-11-24 05:34:37	main
+730	between Ottawa And  Montreal	2011-11-24 05:34:42	main
+731	TEST	2011-11-24 05:35:01	tts
+732	TEST	2011-11-24 05:35:01	tts
+733	between	2011-11-24 05:35:41	main
+734	Vancouver	2011-11-24 05:35:43	main
+735	And	2011-11-24 05:35:48	main
+736	Ottawa	2011-11-24 05:35:54	main
+737	between Vancouver And Ottawa	2011-11-24 05:36:32	main
+738	THE TIME IS 	2011-11-24 05:37:23	tts
+739	THE TIME IS 	2011-11-24 05:37:34	tts
+740	5:37 am	2011-11-24 05:37:34	main
+741	5:37 am	2011-11-24 05:37:40	main
+742	THE TIME IS  5:37 am 5:37 am	2011-11-24 05:38:06	main
+743	I need to go to the  Bathroom	2011-11-24 05:58:35	main
+744	I need to go to the  Bathroom	2011-11-24 05:58:51	main
+745	Good Bye	2011-11-24 05:58:58	main
+746	hey it is Jeffrey	2011-11-24 05:59:03	main
+747	Thursday 24th of November 2011 	2011-11-24 05:59:12	main
+748	he is gone	2011-11-24 06:00:21	main
+749	somewhere	2011-11-24 06:00:25	main
+750	between	2011-11-24 06:00:28	main
+751	ottawa and Montr	2011-11-24 06:00:47	tts
+752	ottawa and Montreal	2011-11-24 06:00:48	tts
+753	ottawa and Montreal	2011-11-24 06:00:48	tts
+754	he is gone	2011-11-24 06:01:29	main
+755	somewhere	2011-11-24 06:01:31	main
+756	between	2011-11-24 06:01:34	main
+757	ottawa and Montreal	2011-11-24 06:01:38	tts
+758	he is gone	2011-11-24 06:01:57	main
+759	somewhere	2011-11-24 06:02:01	main
+760	between	2011-11-24 06:02:03	main
+761	ottawa and Montreal	2011-11-24 06:02:06	tts
+762	he is gone somewhere between ottawa and Montreal	2011-11-24 06:02:21	main
+763	he is gone somewhere between ottawa and Montreal	2011-11-24 06:02:28	main
+764	ottawa and montreal 	2011-11-24 06:04:06	tts
+765	Juice And Banana And Cherry	2011-11-24 06:04:41	main
+766	And	2011-11-24 06:49:08	main
+767	Lego	2011-11-24 06:58:56	main
+768	Lego	2011-11-24 06:59:06	main
+769	:q	2011-11-24 07:01:33	tts
+770	:q	2011-11-24 07:01:45	tts
+771	Pear	2011-11-24 07:01:45	main
+772	Juice	2011-11-24 07:01:49	main
+773	:q	2011-11-24 07:04:18	tts
+774	:q	2011-11-24 07:04:24	tts
+775	:q	2011-11-24 07:06:02	tts
+776	Juice	2011-11-24 07:06:26	main
+777	Banana	2011-11-24 07:06:54	main
+778	Juice	2011-11-24 07:06:59	main
+779	Banana	2011-11-24 07:07:06	main
+780	Juice	2011-11-24 07:07:09	main
+781	Banana Juice	2011-11-24 07:07:22	main
+782	Juice And Banana And Cherry	2011-11-24 07:10:52	main
+783	Banana And Pear	2011-11-24 07:14:08	main
+784	Lego	2011-11-24 07:20:22	main
+785	Lego	2011-11-24 07:23:25	main
+786	Lego	2011-11-24 07:23:49	main
+787	Juice And Banana And Cherry	2011-11-24 07:24:30	main
+788	Juice And Banana And Cherry	2011-11-24 07:26:08	main
+789	Juice And Banana And Cherry	2011-11-24 07:27:58	main
+790	Juice	2011-11-24 07:28:17	main
+791	Juice And Banana And Cherry	2011-11-24 07:28:30	main
+792	Juice	2011-11-24 07:28:47	main
+793	Banana And Pear	2011-11-24 07:36:58	main
+794	Banana And Pear	2011-11-24 07:37:04	main
+795	Juice And Banana And Cherry	2011-11-24 07:37:34	main
+796	Juice And Banana And Cherry	2011-11-24 07:37:38	main
+797	Juice And Banana And Cherry	2011-11-24 07:44:34	main
+798	Banana And Pear	2011-11-24 07:45:54	main
+799	Juice And Banana And Cherry	2011-11-24 08:00:42	main
+800	Banana And Pear	2011-11-24 08:06:32	main
+801	Banana And Pear	2011-11-24 08:06:40	main
+802	Juice And Banana And Cherry	2011-11-24 08:06:49	main
+803	Juice And Banana And Cherry	2011-11-24 13:26:57	main
+804	Juice	2011-11-24 13:27:13	main
+805	test	2011-11-24 14:37:09	tts
+806	Juice	2011-11-24 14:37:22	main
+807	Juice	2011-11-24 14:37:37	main
+808	Carrot	2011-11-24 14:37:45	main
+809	Juice	2011-11-24 14:37:47	main
+810	Carrot	2011-11-24 14:39:25	main
+811	Juice	2011-11-24 14:39:28	main
+812	Carrot	2011-11-24 14:39:37	main
+813	Juice	2011-11-24 14:39:40	main
+814	test	2011-11-24 14:39:51	tts
+815	Carrot Juice	2011-11-24 14:40:03	main
+816	Juice And Banana And Cherry	2011-11-24 17:37:25	main
+817	Pizza	2011-11-24 17:39:35	main
+818	And	2011-11-24 17:39:38	main
+819	French Fies	2011-11-24 17:39:45	main
 \.
 
 
@@ -1068,6 +1171,12 @@ he is gone no where	\N	64	\N	2011-11-21 23:04:19-05	2011-11-21 23:04:19-05	\N	\N
 he is gone	\N	65	\N	2011-11-21 23:04:32-05	2011-11-21 23:04:32-05	\N	\N	20
 hey it is Jeffrey	\N	66	\N	2011-11-22 00:56:33-05	2011-11-22 00:56:33-05	\N	\N	0
 he	\N	67	\N	2011-11-22 01:05:34-05	2011-11-22 01:05:34-05	\N	\N	13
+somewhere	\N	68	\N	2011-11-24 05:26:26-05	2011-11-24 05:26:26-05	\N		20
+between	\N	69	\N	2011-11-24 05:26:52-05	2011-11-24 05:26:52-05	\N		20
+Juice And Banana And Cherry 	\N	70	\N	2011-11-24 17:35:29-05	2011-11-24 17:35:29-05	\N	\N	18
+Banana And Pear 	\N	72	\N	2011-11-24 17:38:44-05	2011-11-24 17:38:44-05	\N	\N	18
+Banana And Pear 	\N	73	\N	2011-11-24 17:38:44-05	2011-11-24 17:38:44-05	\N	\N	18
+Pizza And French Fies 	\N	76	\N	2011-11-24 17:42:53-05	2011-11-24 17:42:53-05	\N	\N	18
 \.
 
 
@@ -1075,10 +1184,18 @@ he	\N	67	\N	2011-11-22 01:05:34-05	2011-11-22 01:05:34-05	\N	\N	13
 -- Data for Name: storyboard; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY storyboard (id, orderno, phase, "time", series) FROM stdin;
-29	1	Banana	2011-11-22 16:57:05	3
-30	2	And	2011-11-22 16:57:11	3
-31	3	Pear	2011-11-22 16:57:16	3
+COPY storyboard (id, orderno, phase, "time", series, status) FROM stdin;
+90	1	Pizza	2011-11-24 17:39:35	14	SAVED
+91	2	And	2011-11-24 17:39:38	14	SAVED
+92	3	French Fies	2011-11-24 17:39:45	14	SAVED
+29	1	Banana	2011-11-22 16:57:05	3	\N
+30	2	And	2011-11-22 16:57:11	3	\N
+31	3	Pear	2011-11-22 16:57:16	3	\N
+48	1	Juice	2011-11-24 05:24:50	5	\N
+49	2	And	2011-11-24 05:24:56	5	\N
+50	3	Banana	2011-11-24 05:24:59	5	\N
+51	4	And	2011-11-24 05:25:05	5	\N
+52	5	Cherry	2011-11-24 05:25:08	5	\N
 \.
 
 

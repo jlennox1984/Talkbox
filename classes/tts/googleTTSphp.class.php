@@ -351,15 +351,19 @@ class GoogleTTSHTML extends GoogleTTS{
         	}).jPlayer("onSoundComplete", function() {
                if (CURRENT_AUDIO_FOR_HTML_SITE <= SONGS_FOR_HTML_SITE.length-2){
                    this.element.jPlayer("setFile", SONGS_FOR_HTML_SITE[++CURRENT_AUDIO_FOR_HTML_SITE]).jPlayer("play");
-
+		self.close();
+			alert("test");
                }
         	});
 
 
-	events: {
-   onComplete: donetalking();
-
+	/**  events: {
+   onSoundComplete: 
+	var test1 = $("#jquery_jplayerHtmlGoogleTTS").jPlayer.status.duration 
+	alert(test1);
         }
+*/
+
 	function donetalking(){
 	window.close();
         }
