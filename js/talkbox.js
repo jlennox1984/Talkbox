@@ -12,6 +12,7 @@ function loadvoicebox(board){
 function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
 	 document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
+
 	 document.getElementById('voiceframe'+board).style.width='0px';
  	document.getElementById('voiceframe'+board).style.height='0px';
 	 document.getElementById('voiceframe'+board).style.display='block';
@@ -37,22 +38,57 @@ function sayit(id,mode,board){
 function savevol(str){
 	httpObject = getHTTPObject();
 //if (httpObject != null) {
-	httpObject.open("GET", "savevol.php?vol="+str)
+	httpObject.open("GET", "relays.php?action=vol&vol="+str)
 	httpObject.send(null);
 //	 alert(str);
 	 document.getElementById('volind').innerHTML=+str;
 
 //	}
 }
+ function recordon(){
+	
+ httpObject = getHTTPObject();
+	//if (httpObject != null) {
+	
+        httpObject.open("GET", "relays.php?action=recordon")
+	httpObject.send(null);
+		alert('RECORD ON');
+		document.getElementById('recmods').innerHTML=' <a href=\"#\" onclick=\"return recordoff();\"> RECORD OFF<a>'	
 
+	
+	
+}
+
+ function recordoff(){
+
+ httpObject = getHTTPObject();
+        //if (httpObject != null) {
+
+        httpObject.open("GET", "relays.php?action=recordoff")
+        httpObject.send(null);
+                alert('RECORD OFF');
+                document.getElementById('recmods').innerHTML=' <a href=\"#\" onclick=\"return recordon();\"> RECORD ON<a>'
+
+
+
+}
+function deletestory(sid){
+	 httpObject = getHTTPObject();
+        //if (httpObject != null) {
+
+        httpObject.open("GET", "relays.php?action=delstory&sid="+sid)
+        httpObject.send(null);
+                alert('DELETE STORY');
+		document.getElementById('row'+sid).innerHTML='';
+}
 function savephase(hid){
 	 httpObject = getHTTPObject();
         var sel = document.getElementById("item"+hid);
 	var board=sel.options[sel.selectedIndex].value;
 //	alert(board);
-	var methods="?hid="+hid+"&board="+board;
+	var methods="?action=savephase&hid="+hid+"&board="+board;
 //	alert(methods);
-	httpObject.open("GET", "savephase.php"+methods);
+	httpObject.open("GET", "relays.php"+methods);
 	 document.getElementById('commit'+hid).innerHTML="SAVED";
 	
 	document.getElementById('button'+hid).style.visibility='hidden'; // hide 
