@@ -46,20 +46,31 @@ $i++;
 if($i%2){echo "<td>&nbsp;</td><td>&nbsp;</td>";}
 echo "</tr></table>";
 }
-function getboardselect($hid){
+function getboardselect($hid,$type){
 	global $DBI;
 	$SQL="SELECT  id,name FROM boards";
 	print "</tr><td> <div id=\"commit$hid\" class=\"commitmsg\"> <select id='item$hid'>\r\n";
 	 $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 	while($row = pg_fetch_array($result)){
-		print "<option value='".$row['id']."'> ".$row['name']." </optiom>";
+		print "<option value='".$row['id']."'> ".$row['name']." </optiom>\n";
 	}	
-	print "</td>\r\n <td>  <div id=\"commit$hid\" class=\"commitmsg\">  
-<input  id=\"button$hid\"  type=\"button\"  value=\"COMMIT\" onclick=\"savephase($hid);\">  </button>  
-\r\n </div>
-		</td>
-	</div>
-</tr> ";
+		if($type=='history'){
+		print "</td>\r\n <td>  <div id=\"commit$hid\" class=\"commitmsg\">  
+		<input  id=\"button$hid\"  type=\"button\"  value=\"COMMIT\" onclick=\"savephase($hid);\">  </button>  
+		\r\n </div>
+			</td>
+		</div>
+	</tr> ";
+	}elseif($type=="phasewriter"){
+
+                print "</td>\r\n <td>  <div id=\"commit$hid\" class=\"commitmsg\">  
+                <input  id=\"button$hid\"  type=\"button\"  value=\"COMMIT\" onclick=\"savephasewriter($hid);\">  </button>  
+                \r\n </div>
+                        </td>
+                </div>
+        </tr> ";
+
+	}
 }
 function showhistory($board){ 
         global  $DBI;
@@ -85,7 +96,7 @@ while($row = pg_fetch_array($result)){
 			
 				if($mode=='tts'){
 				// print"<tr><td class='msgcommon' id='$id'> <a href='#' onclick='savephase($id);'>Save phase as common Phase</a>
-		$this->getboardselect($id);					
+		$this->getboardselect($id,'history');					
 }
 				print "</table> ";
      if($i%$cols == $cols -1)echo "</tr>\r\n";
@@ -122,7 +133,19 @@ function savephase($hid,$board){
 
  	}			
 }
+function savephasewriter($phase,$board,$series){
+	global $DBI;
+	 $date=date('Y-m-d H:i:s');
+	//INSERT IN TO MAIN PHASES//
 
+		 $SQL="INSERT INTO phases(phases,boards_id,modified,created) VALUES('$phase','$board','$date','$date')";
+		$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+		print "SQL EQ: ".$SQL;
+		//UPDATE STATUS
+		$SQL="UPDATE storyboard SET status='SAVED' WHERE series='$series' ";
+		$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+
+}
 
 
 function recordon(){
@@ -362,10 +385,11 @@ while($row = pg_fetch_array($result)){
 		";      
 		
 	//GET SERIES
-	$SQL="SELECT  DISTINCT ON (series) series,time FROM storyboard";
+	$SQL="SELECT  DISTINCT ON (series) series,time,status FROM storyboard";
 	$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
 		while($row= pg_fetch_array($result)){
 			$seriesno=$row['0'];
+			$status=$row['2'];
 		//GET PHASES AND BUILD INTO A STRING // 
 			$SQL="SELECT phase FROM storyboard WHERE series='$seriesno' ORDER BY orderno ASC";
 		//	print $SQL ."\n";
@@ -384,7 +408,12 @@ while($row = pg_fetch_array($result)){
 				print" </td>\n
 			<td> <table> <tr><td>
 				<a href='#' onclick=\"sayit('$seriesno','main','$board');\"> replay</a></td></tr>\n
-				<tr><td> <a href='#' onclick=\"deletestory('$seriesno');\"> Delete</a></td></tr></table></td></tr>
+				<tr><td> <a href='#' onclick=\"deletestory('$seriesno');\"> Delete</a></td></tr></table></td><td>\n";
+				if($status !='SAVED'){
+					$this-> getboardselect($seriesno,'phasewriter');
+					}
+				print "<t/d>
+				</tr>\n
 			";}
 	
 				
@@ -407,7 +436,7 @@ while($row = pg_fetch_array($result)){
                         $result1 = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
                         $array=pg_fetch_all($result1);
                 //      print_r($array);
-			print  "<input type='hidden' value =\""; 
+			print  "\n<input type='hidden' value =\""; 
                                 for($i = 0; $i < count($array); $i++){
                                 $output= implode(" ", $array[$i]);
 

@@ -45,6 +45,20 @@ function savevol(str){
 
 //	}
 }
+function savephasewriter(id){
+
+	var str=document.getElementById(+id).value;
+	alert('string eq:' +str);
+	 var sel = document.getElementById("item"+id);
+	 var board=sel.options[sel.selectedIndex].value;
+	alert('board eq: ' +board); 
+	var method="?action=savephasewriter&phase="+str+"&board="+board+'&series='+id;
+	httpObject = getHTTPObject();
+//if (httpObject != null) {
+        httpObject.open("GET", "relays.php"+method);
+        httpObject.send(null);
+
+}
  function recordon(){
 	
  httpObject = getHTTPObject();
