@@ -283,3 +283,7 @@
 2011-11-14 00:02:40 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 119]
 2011-11-14 00:02:54 Notice: Notice (8): Undefined variable: error in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 117]
 2011-11-14 00:02:54 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 119]
+2011-11-24 05:26:26 Notice: Notice (8): Undefined variable: error in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 117]
+2011-11-24 05:26:26 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 119]
+2011-11-24 05:26:52 Notice: Notice (8): Undefined variable: error in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 117]
+2011-11-24 05:26:52 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 119]

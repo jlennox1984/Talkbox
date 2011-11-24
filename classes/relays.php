@@ -21,7 +21,12 @@ $action=$_REQUEST['action'];
 		}elseif($action=="delstory"){
 		$sid=$_REQUEST['sid'];
 		$tb->deletestoryboard($sid);
-		}
+		}elseif($action=='savephasewriter'){
+		$phase=$_REQUEST['phase'];
+		$board=$_REQUEST['board'];
+		$series=$_REQUEST['series'];
+		$tb-> savephasewriter($phase,$board,$series);
+}
 
 ?>
 
