@@ -18,6 +18,9 @@ $action=$_REQUEST['action'];
 			$tb->recordon();
 		}elseif ($action=='recordoff'){
 			$tb->recordoff();
+		}elseif($action=="delstory"){
+		$sid=$_REQUEST['sid'];
+		$tb->deletestoryboard($sid);
 		}
 
 ?>
