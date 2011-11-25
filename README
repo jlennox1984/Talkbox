@@ -1,0 +1,78 @@
+Talkbox V1.2
+Moncrieff Web Design Service (MWDS)
+(C) GPL 2010,2011
+
+ To install Talkbox You have two options a Manual Install or a Auto install Based on Ubnutu 10.10 (Meveric)
+
+#################
+#Manual Install#
+#################
+ To do a Manual Install you will need a a couple of depencies 
+
+	0.Linux based os ie Ubuntu,debian,Redhat.
+	1.apache Http server
+	2.PHP 
+	3.Postgresql
+	4.festival
+	5.lame
+	6.php-postgres database adapter
+	7.git
+		
+1->make a temp dir
+
+mkdir tmp
+
+cd tmp
+2->download talkbox 
+ git clone http://github.com/jmoncrieff/Talk-Box/
+3->copy the Source code to apache
+ sudo cp Talk-Box/* /var/www/
+ sudo rm /var/www/index.html
+
+4->enable some modules for apache
+sudo a2enmod rewrite
+
+now edit apache  config
+gedit /etc/apache2/sites-enabled/000-default 
+	* on line 12 change AllowOverride None to AllowOverride All save and exit
+	restart apache
+	* sudo /etc/init.d/apache2 restart
+	
+5->Setup database 
+ set root passwd
+	*sudo passwd root
+ 
+ gedit /etc/postgresql/8.4/main/pg_hba.conf  
+on line 77 chage 
+	local   all         postgres                          ident
+	to
+	local   all         postgres                          trust
+ 	an line 82
+         local   all         all                        ident
+        to
+        local   all         all                         trust
+	
+Create Your Database
+createuser talkbox
+ createdatebase talkbox
+	
+ pgsql
+  
+ ALTER ROLE talkbox WITH PASSWORD 'talkbox';
+ \q
+
+exit the postgres shell
+	exit
+now restart postgress by issueing this command
+	/etc/init.d/postgresql restart
+exit the super user shell
+exit
+	
+
+ psql -U talkbox -d talkbox </var/www/talkbox.pgql 
+ this initalzies the database
+
+
+6-> Test
+ launch firefox and go to http://localhost
+
