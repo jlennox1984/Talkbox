@@ -6,7 +6,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'postgres',
-		'password' => '5373988',
+		'password' => 'postgres',
 		'database' => 'talkbox',
 		'schema' => 'public',
 	);
@@ -15,7 +15,7 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'postgres',
-		'password' => '5373988',
+		'password' => 'postgres',
 		'database' => '1771',
 		'schema' => 'public',
 	);
