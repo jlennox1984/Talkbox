@@ -6,8 +6,11 @@ function loadvoicebox(board){
 	//alert (str);
  	document.getElementById('voiceframe'+board).src='engine.php?str=' +str+'&mode='+mode;
  	document.getElementById('voiceframe'+board).style.width='0px';
-	 document.getElementById('voiceframe'+board).style.height='0px';
-	 document.getElementById('voiceframe'+board).style.display='block';	
+	document.getElementById('voiceframe'+board).style.height='0px';
+	document.getElementById('voiceframe'+board).style.display='block';	
+	//Clear text Box
+	var tmp= document.getElementById("tts1");
+	tmp.value='';
 }
 function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
@@ -16,7 +19,8 @@ function sayit(id,mode,board){
 	 document.getElementById('voiceframe'+board).style.width='0px';
  	document.getElementById('voiceframe'+board).style.height='0px';
 	 document.getElementById('voiceframe'+board).style.display='block';
- 
+	 //Clear text Box
+        document.getElementById('voiceframe'+board).value='';
 }
  // Get the HTTP Object
     function getHTTPObject(){
