@@ -211,9 +211,11 @@ $i = 0;//indexing variable
 //$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
+         $link="<a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}";
+
 	if($row['filename'] !=''){
 
-     		print " <td><table border='0'><tr><td> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},'$mode','$bid')>
+     		print " <td><table border='0'><tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},'$mode','$bid')></a>
 			<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></table>
 			</td>\r\n";
 		} else{
