@@ -10,7 +10,7 @@ function loadvoicebox(board){
 	document.getElementById('voiceframe'+board).style.display='block';	
 	//Clear text Box
 	var tmp= document.getElementById("tts1");
-	tmp.value='';
+        	tmp.value='';
 }
 function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
@@ -20,7 +20,8 @@ function sayit(id,mode,board){
  	document.getElementById('voiceframe'+board).style.height='0px';
 	 document.getElementById('voiceframe'+board).style.display='block';
 	 //Clear text Box
-        document.getElementById('voiceframe'+board).value='';
+        var tmp=document.getElementById(+id);
+          tmp.value='';
 }
  // Get the HTTP Object
     function getHTTPObject(){
