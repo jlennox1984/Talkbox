@@ -289,3 +289,5 @@
 2011-11-24 05:26:52 Notice: Notice (8): Undefined variable: fileName in [/var/www/devel.mwds.info/web/talkbox2/classes/cake/app/controllers/phases_controller.php, line 119]
 2012-08-07 22:33:25 Notice: Notice (8): Undefined variable: error in [/var/www/classes/cake/app/controllers/phases_controller.php, line 117]
 2012-08-07 22:33:25 Notice: Notice (8): Undefined variable: fileName in [/var/www/classes/cake/app/controllers/phases_controller.php, line 119]
+2012-09-01 16:56:46 Notice: Notice (8): Undefined variable: boards_list in [/var/www/classes/cake/app/views/phases/add.ctp, line 9]
+2012-09-01 16:57:36 Notice: Notice (8): Undefined variable: boards_list in [/var/www/classes/cake/app/views/phases/add.ctp, line 9]
