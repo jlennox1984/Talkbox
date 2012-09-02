@@ -2,7 +2,7 @@
 class PhasesController extends AppController {
 
 	var $name = 'Phases';
-	var $path='/var/www/devel.mwds.info/web/talkbox2/';	
+	var $path='/var/www/';	
 	var $validateFile = array(
                           'size' => 204800,
 	                  'type' => 'jpg,jpeg,png,gif'
@@ -11,7 +11,7 @@ class PhasesController extends AppController {
 
 	function generateUniqueFilename($fileName, $path=''){
    //$path = empty($path) ? WWW_ROOT.'/files/' : $path;
-     $path='/var/www/devel.mwds.info/web/talkbox2/';
+     $path='/var/www/';
 	 $no = 1;
     $newFileName = $fileName;
     while (file_exists("$path/".$newFileName)) {
@@ -22,7 +22,7 @@ class PhasesController extends AppController {
   }
 	  function handleFileUpload($fileData, $fileName)
   {
-	 $path='/var/www/devel.mwds.info/web/talkbox2/pics/';
+	 $path='/var/www/pics/';
 
     $error = false;
 
