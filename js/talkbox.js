@@ -16,7 +16,7 @@ function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
 	 document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
 
-	alert(str);
+     //	alert(str);
 
 	 document.getElementById('voiceframe'+board).style.width='0px';
  	document.getElementById('voiceframe'+board).style.height='0px';
