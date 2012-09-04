@@ -16,12 +16,14 @@ function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
 	 document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
 
+	alert(str);
+
 	 document.getElementById('voiceframe'+board).style.width='0px';
  	document.getElementById('voiceframe'+board).style.height='0px';
 	 document.getElementById('voiceframe'+board).style.display='block';
 	 //Clear text Box
-        var tmp=document.getElementById(+id);
-          tmp.value='';
+        var tmp=document.getElementById('voiceframe'+board);
+//          tmp.value='';
 }
  // Get the HTTP Object
     function getHTTPObject(){
