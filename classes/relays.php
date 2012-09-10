@@ -19,15 +19,19 @@ $action=$_REQUEST['action'];
 		}elseif ($action=='recordoff'){
 			$tb->recordoff();
 		}elseif($action=="delstory"){
-		$sid=$_REQUEST['sid'];
-		$tb->deletestoryboard($sid);
+			$sid=$_REQUEST['sid'];
+			$tb->deletestoryboard($sid);
 		}elseif($action=='savephasewriter'){
-		$phase=$_REQUEST['phase'];
-		$board=$_REQUEST['board'];
-		$series=$_REQUEST['series'];
-		$tb-> savephasewriter($phase,$board,$series);
-}
-
+				$phase=$_REQUEST['phase'];
+				$board=$_REQUEST['board'];
+				$series=$_REQUEST['series'];
+				$tb-> savephasewriter($phase,$board,$series);
+		}elseif($action=='recallon'){
+					
+			$tb->updateconfig('recall' ,'ON');
+		}elseif($action=='recalloff'){
+			$tb->updateconfig('recall','OFF');
+		}
 ?>
 
 

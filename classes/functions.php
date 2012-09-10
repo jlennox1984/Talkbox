@@ -7,7 +7,7 @@ class talkbox{
 function talkboxheader(){
 		$header='<link rel="stylesheet" type="text/css" href="cake/css/cake.generic.css" />
         <link rel="stylesheet" type="text/css" href="css/talkbox.css" />
-         <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">
+        <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">
             <script type="text/javascript" src="../js/jquery-1.6.3.js "></script>          
         <script type="text/javascript" src="../js/talkbox.js"></script>
 	<script type="text/javascript" src="../js/ajax.js"></script>
@@ -163,6 +163,19 @@ global $DBI;
 	$result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
         
       }
+function recallon(){
+	global $DBI;
+        $SQL="UPDATE config SET value='ON' WHERE key='recall'";
+         $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+
+	}
+
+function recalloff(){
+	global $DBI;
+        $SQL="UPDATE config SET value='OFF' WHERE key='recall";
+         $result = pg_query($DBI, $SQL) or die("Error in query: $SQL." . pg_last_error($DBI));
+
+}
 
 function phasewriter($str){
 global $DBI;
@@ -195,6 +208,7 @@ global $DBI;
 	global  $DBI;
 	$mode='main';
 	$recmode=$this->getconfig(record);
+	$recallmode=$this->getconfig(recall);
 	 $path_pics="../pics";
         $sql="SELECT id,phases,paraphase,filename FROM phases WHERE boards_id='$bid'";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
@@ -208,6 +222,7 @@ echo "<table>";
 $i = 0;//indexing variable
  //GET $path_pics
 	$path_pics=$this->getconfig(path_pics);
+	
 //$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
      if($i%$cols == 0)echo "<tr>\r\n";
@@ -236,6 +251,13 @@ print "<div id=\"recmods\" align=\"right\" style=\"color: #00000000; font-size: 
 	print "<div id=\"recmods\" align=\"right\" style=\"color: #00000000; font-size: 7px; margin-right: 3cm; \"><a href=\"#\" onclick=\"return recordoff();\"> RECORD OFF<a> </div>";
 	
  	}
+         if($recallmode=='OFF'){
+print "<div id=\"recallmods\" align=\"right\" style=\"color: #00000000; font-size: 7px; margin-right: 3cm; \"><a href=\"#\" onclick=\"return recallon();\"> RECALL ON<a> </div>";
+          }
+
+        elseif($recallmode=='ON'){
+        print "<div id=\"recallmods\" align=\"right\" style=\"color: #00000000; font-size: 7px; margin-right: 3cm; \"><a href=\"#\" onclick=\"return recalloff();\"> RECALL  OFF<a> </div>";
+	}
 
 }
 function getconfig($key){
