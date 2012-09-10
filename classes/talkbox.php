@@ -25,7 +25,11 @@ Phases
 $tb->showphases($board); 
 $tb->volctl();
 ?>
-
+<?php
+$recallmode=$tb->getconfig('recall');
+?>
+<input type='hidden' id='recall' value='<?php print $recallmode?>'>
+ 
 <hr>
 <form name="Talkbox" method="post" action="">
 <input name="tts1"  id="tts1" value="" onblur="loadvoicebox(0);"/>

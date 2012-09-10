@@ -9,14 +9,17 @@ function loadvoicebox(board){
 	document.getElementById('voiceframe'+board).style.height='0px';
 	document.getElementById('voiceframe'+board).style.display='block';	
 	//Clear text Box
-	var tmp= document.getElementById("tts1");
+	var recallmode= document.getElementById("recall").value;
+    if(recallmode !='ON'){
+	        var tmp= document.getElementById("tts1");
         	tmp.value='';
+    }
 }
 function sayit(id,mode,board){
 	var str=document.getElementById(+id).value;
-	 document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
-
-     //	alert(str);
+   document.getElementById('voiceframe'+board).src='engine.php?mode='+mode+'&str='+str;
+	
+    // 	alert(str);
 
 	 document.getElementById('voiceframe'+board).style.width='0px';
  	document.getElementById('voiceframe'+board).style.height='0px';
@@ -90,9 +93,30 @@ function savephasewriter(id){
                 alert('RECORD OFF');
                 document.getElementById('recmods').innerHTML=' <a href=\"#\" onclick=\"return recordon();\"> RECORD ON<a>'
 
-
+                document.getElementById('recall').value='OFF';
 
 }
+function recallon(){
+
+httpObject = getHTTPObject();
+        //if (httpObject != null) {
+
+        httpObject.open("GET", "relays.php?action=recallon")
+        httpObject.send(null);
+                //alert('RECALL ON');
+                document.getElementById('recallmods').innerHTML=' <a href=\"#\" onclick=\"return recalloff();\"> RECALL OFF<a>'
+     		 document.getElementById('recall').value='ON'; 
+}
+function recalloff(){
+ 
+    httpObject = getHTTPObject();
+        //if (httpObject != null) {
+
+        httpObject.open("GET", "relays.php?action=recalloff")
+        httpObject.send(null);
+                document.getElementById('recallmods').innerHTML=' <a href=\"#\" onclick=\"return recallon();\"> RECALL ON<a>'
+                 document.getElementById('recall').value='OFF';  
+}   
 function deletestory(sid){
 	 httpObject = getHTTPObject();
         //if (httpObject != null) {
@@ -104,7 +128,7 @@ function deletestory(sid){
 }
 function savephase(hid){
 	 httpObject = getHTTPObject();
-        var sel = document.getElementById("item"+hid);
+        var sel = docume4nt.getElementById("item"+hid);
 	var board=sel.options[sel.selectedIndex].value;
 //	alert(board);
 	var methods="?action=savephase&hid="+hid+"&board="+board;
@@ -204,7 +228,7 @@ return false;
                     beingShown = true;
 
                     info.css({
-                        top: -90,
+                         top: -90,
                         left: -33,
                         display: 'block'
                     }).animate({
