@@ -533,6 +533,7 @@ COPY config (id, key, value) FROM stdin;
 4	recordseries	14
 3	record	OFF
 5	recordorder	0
+6	recall		OFF
 \.
 
 
