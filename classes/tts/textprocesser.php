@@ -64,11 +64,12 @@ $speech = substr($speech, 0, 1024);
       fwrite($fh, $speech);
       fclose($fh);
     }
+	$voice=$tb->getconfig(voice);
 
     // if the speech file exists, use text2wave
     if (file_exists($speech_file)) {
       // create the text2wave command and execute it
-      $text2wave_cmd = sprintf("text2wave -o %s -scale %d %s",$wave_file,$volume_scale,$speech_file);
+      $text2wave_cmd = sprintf("text2wave -o %s -scale %d %s -eval '('$voice')'",$wave_file,$volume_scale,$speech_file);
       exec($text2wave_cmd);
 
       // create an MP3 version?
