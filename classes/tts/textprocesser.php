@@ -76,7 +76,7 @@ $speech = substr($speech, 0, 1024);
       
         // create the lame command and execute it
 		$filenameNEW= 'mp3_tts/'.md5(trim(strtoupper($speech_raw))).'.mp3';
-        $lame_cmd = sprintf("lame %s %s",$wave_file,$filenameNEW);
+        $lame_cmd = sprintf("lame --bitwidth 32 %s %s",$wave_file,$filenameNEW);
         exec($lame_cmd);
         // delete the WAV file to conserve space
         unlink($wave_file);
