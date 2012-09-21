@@ -534,6 +534,7 @@ COPY config (id, key, value) FROM stdin;
 3	record	OFF
 5	recordorder	0
 6	recall		OFF
+8	voice		voice_kal_diphone
 \.
 
 
