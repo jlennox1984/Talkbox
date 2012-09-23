@@ -65,7 +65,9 @@ $speech = substr($speech, 0, 1024);
       fclose($fh);
     }
 	$voice=$tb->getconfig(voice);
-
+	if($voice=''){	
+		$voice='voice_kal_diphone'; // default festival voice
+	}
     // if the speech file exists, use text2wave
     if (file_exists($speech_file)) {
       // create the text2wave command and execute it
