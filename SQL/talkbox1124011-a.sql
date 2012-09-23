@@ -1,4 +1,4 @@
---
+
 -- PostgreSQL database dump
 --
 
@@ -554,6 +554,7 @@ COPY folders (folderid, orderno, parentid, title, name, url, img, pane, type, is
 14	1	7	Food	Food	./board.php?bid=18	\N	center	\N	\N
 16	1	7	Verbs	Verbs	./wrapperboard.php?bid=20	\N	center	\N	\N
 17	7	0	Storey Board	Storey Board	./storyboard.php	\N	center	\N	\N
+18      8       3       Edit Voice      Edit Voice      edit-voice.php  \N      center  \N      \N
 \.
 
 
