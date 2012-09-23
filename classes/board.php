@@ -29,7 +29,7 @@ $name=$tb->getbroardname($board);
 <?php
 $recallmode=$tb->getconfig('recall');
 print "\n Recallmnode->$recallmode";
-
+?>
 <input type='hidden' name='recall' value='`>
  
 <h2> <?php echo $name?> </h2>

@@ -31,7 +31,12 @@ $action=$_REQUEST['action'];
 			$tb->updateconfig('recall' ,'ON');
 		}elseif($action=='recalloff'){
 			$tb->updateconfig('recall','OFF');
-		}
-?>
+		}elseif($action='editvoice'){
+			$voice=$_REQUEST['voice'];
+			$str="voice_$voice";
+			$tb->updateconfig('voice',$str);
+			}
+			
+	?>
 
 
