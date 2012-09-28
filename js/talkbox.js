@@ -148,6 +148,8 @@ function editvoice(voice){
         httpObject.open("GET", "relays.php?action=editvoice&voice="+voice)
         httpObject.send(null);
 	alert ("the Voice is now set to:"+voice);
+        	 document.getElementById('voicestatus').innerHTML=voice;
+
 }
 function popitup(url) {
 	newwindow=window.open(url,'name','height=200,width=150');
