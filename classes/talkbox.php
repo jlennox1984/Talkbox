@@ -15,6 +15,20 @@ $board=0;
 	// Show scripts 
 	$tb->talkboxheader();
 ?>
+<script type="text/javascript">
+function init() {
+        shortcut.add("Alt+r", function() {
+			recallon();
+		});
+
+        shortcut.add("Alt+o", function() {
+				recalloff();
+			});
+        
+                }
+        
+        </script>
+
 	
 </head>
 

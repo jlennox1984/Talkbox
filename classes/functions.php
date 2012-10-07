@@ -14,7 +14,8 @@ function talkboxheader(){
 	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
 	        <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
-                <link rel="stylesheet" type="text/css" href="assets/style.css"></link>	
+                <script type="text/javascript" src="../js/shortcut.js">
+		<link rel="stylesheet" type="text/css" href="assets/style.css"></link>	
 		<script type="text/javascript">
 			var tooltipObj = new DHTMLSuite.dynamicTooltip(); // Create ONE tooltip object.
 	</script> 
