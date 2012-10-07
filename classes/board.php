@@ -11,6 +11,14 @@ $name=$tb->getbroardname($board);
 	var obj;
 	var TAB=9;
 </script>
+<script type="text/javascript">
+function init(){
+	shortcut.add("Alt+r", recallon();)
+	shortcut.add("Ctrl+o", recalloff();)
+	
+		}
+	
+	</script>
 
 <title> </title>
         <?php
