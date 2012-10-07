@@ -2,7 +2,7 @@
 // define the temporary directory
 // and where audio files will be written to after conversion
 $tmpdir = "tmp";
-$audiodir = "/home/talkbox/www/classes/tts/mp3_tts";
+$audiodir = "/www/classes/tts/mp3_tts";
 $speech=$_REQUREST['sp'];
 // if the Text-To-Speech button was click, process the data
 //if (isset($_POST["make_audio"])) {
@@ -44,7 +44,7 @@ $speech = stripslashes(trim($_POST["speech"]));
       // create an MP3 version?
       if ($save_mp3) {
         // create the lame command and execute it
-        $lame_cmd = sprintf("lame %s %s",$wave_file,$mp3_file);
+        $lame_cmd = sprintf("lame --bandwidth 32 %s %s ",$wave_file,$mp3_file);
         exec($lame_cmd);
         // delete the WAV file to conserve space
         unlink($wave_file);

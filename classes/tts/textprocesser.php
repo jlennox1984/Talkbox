@@ -64,18 +64,25 @@ $speech = substr($speech, 0, 1024);
       fwrite($fh, $speech);
       fclose($fh);
     }
-
+	
     // if the speech file exists, use text2wave
-    if (file_exists($speech_file)) {
+   if (file_exists($speech_file)) {
       // create the text2wave command and execute it
-      $text2wave_cmd = sprintf("text2wave -o %s -scale %d %s",$wave_file,$volume_scale,$speech_file);
+   $voice=$tb->getconfig('voice');
+        error_log("our voice is $voice");
+        if($voice==''){
+              $voice='voice_kal_diphone'; // default festival voice
+        }  
+ $text2wave_cmd = sprintf("text2wave -o %s -scale %d %s -eval '({$voice})'",$wave_file,$volume_scale,$speech_file);
+	
+    error_log($text2wave_cmd);
       exec($text2wave_cmd);
 
       // create an MP3 version?
       
         // create the lame command and execute it
 		$filenameNEW= 'mp3_tts/'.md5(trim(strtoupper($speech_raw))).'.mp3';
-        $lame_cmd = sprintf("lame %s %s",$wave_file,$filenameNEW);
+        $lame_cmd = sprintf("lame --bitwidth 32 %s %s",$wave_file,$filenameNEW);
         exec($lame_cmd);
         // delete the WAV file to conserve space
         unlink($wave_file);
