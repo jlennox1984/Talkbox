@@ -11,7 +11,8 @@ include 'config.inc.php';
 <head>
 
 
-	<title>MWDS talkbox Alpha 1.0</title>
+<title>MWDS talkbox <?php global $version; 
+echo $version;?></title>
 	<style type="text/css">
 	/* CSS for the demo. CSS needed for the scripts are loaded dynamically by the scripts */
 	h1{
@@ -160,8 +161,6 @@ $ds->downloadMP3();
 <body>
 <!-- START DATASOURCES FOR THE PANES -->
 <div id="westContent">
-	<!-- Added by J.Moncrieff for Slienceit November 23,2009 -->	 
-
 <div class="dtree">
 
 	<p><a href="javascript: d.openAll();">open all</a> | <a href="javascript: d.closeAll();">close all</a></p>
