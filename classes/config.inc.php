@@ -7,9 +7,8 @@
 
 $dhost='localhost';
 $username="postgres";
-$pass="postgres"
-;
-
+$pass="postgres";
+$version=2.0;
 
 $password=$pass;
 //$db=mysql_connect($dhost, $username, $pass)or die     ('Error connecting to mysql');
