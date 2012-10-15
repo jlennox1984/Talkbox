@@ -16,17 +16,15 @@ $board=0;
 	$tb->talkboxheader();
 ?>
 <script type="text/javascript">
-function init() {
-        shortcut.add("Alt+r", function() {
+        shortcut.add("r", function() {
 			recallon();
 		});
 
-        shortcut.add("Alt+o", function() {
-				recalloff();
-			});
-        
-                }
-        
+        shortcut.add("o",recalloff(););
+       
+       shortcut.add("X",function() {
+	alert("Hello!");
+});
         </script>
 
 	
