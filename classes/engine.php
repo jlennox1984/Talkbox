@@ -12,6 +12,7 @@ include 'tts/googleTTSphp.class.php';
 include  'functions.php';
 $tb = new talkbox; 
 $vol=$tb->getconfig('vol') *10;
+$voice=$tb->getconfig('voice');
 $straw=$_REQUEST['str'];
 $str;
 if($straw=='whattime'){
@@ -40,7 +41,8 @@ $ds = new GoogleTTSHTML;
 
 // Set the path to where mp3s will get cached / stored.
 $ds->setStorageFolder('mp3_tts/');
-
+//Set Voice
+$ds->setVoice($voice);
 
 // Set language.
 $ds->setLang('en'); // Not needed, because en is default.
@@ -72,8 +74,14 @@ $ds->setVol($vol);
  Ever wondered how popular PHP is? see the Netcraft Survey.
 ", "Thank you for using Google Text To Speech library."));
 */
-echo $str;
-$ds->setInput(array($str));
+echo"string->". $straw."\n";
+error_log("Speech Engine Raw string->" .$straw);
+
+$fileNameNEW = md5(trim(strtoupper($straw)))."$voice.mp3";
+error_log("Speech Engine Filename->" .$fileNameNEW);
+$ds->setFilename($fileNameNEW);
+//echo $fileNameNEW;
+$ds->setInput(array($straw));
 
 
 // Example readup of a whole html page. True must come as seccond arguement since this is html.
@@ -84,6 +92,7 @@ $ds->setInput(array($str));
 
 // Downloads the Mp3, If the text is large,
 // NOTE! the first time it will take some time before they are downloaded and page is ready. When done, they will not need to be downloaded and page will load fast.
+
 $ds->downloadMP3();
 
 
