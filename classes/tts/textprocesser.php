@@ -86,7 +86,7 @@ $speech = substr($speech, 0, 1024);
       error_log("TXT Processer raw string->" .$speech_raw);
       //$filename= md5(trim(strtoupper($speech_raw)))."$voice.mp3";
       error_log("Txt Processer md5->".$md5);
-      $filenameNEW=$md5;
+      $filenameNEW="mp3_tts/".$md5;
         $lame_cmd = sprintf("lame --bitwidth 32 %s %s",$wave_file,$filenameNEW);
         exec($lame_cmd);
         // delete the WAV file to conserve space
