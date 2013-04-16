@@ -37,7 +37,6 @@ class GoogleTTS{
     private $mp3folder="mp3_tts";
     
     private $lang='en';
-
     /**
       * setInput Must be run.
       * @param $texts Array, string or HTML code to translate into file bits of mp3.
@@ -74,7 +73,13 @@ class GoogleTTS{
 	 public function setVol($vol){
         $this->vol = $vol;
         }
-	
+	 public function setVoice($voice){
+	   $this->voice = $voice;
+	 }
+	 public function setFilename($file){
+	   $this->fileNAME = $file;
+	   echo $file;
+	 }
     /**
       * Sets the storage path, where this class saves and caches mp3 files.
       * @param $htmlcode A whole html page, or just bits of xml / html.
@@ -109,17 +114,21 @@ class GoogleTTS{
       * Downloads mp3 file(s) to storage, saves file as md5($text), caches is and if the text bit already exists it will NOT dl it, but just move on!
       * This should not be run @ level when user is waiting on the page to load, rather add ajax call to it. Let it load in background.
       */
+    
     public function downloadMP3(){
-        if (!file_exists($this->mp3folder))mkdir($this->mp3folder);
+      
+    if (!file_exists($this->mp3folder))mkdir($this->mp3folder);
         if (!file_exists($this->mp3folder))throw new Exception("You must set the storage folder for storing mp3. Current is: ".$this->mp3folder);
         foreach($this->strings as $s){
             $strA = $this->strSplitWordFriendly($s, 100);
             foreach($strA as $str){
-                $filename=md5(trim(strtoupper($str))).'.mp3';
-		$TBUrl=$this->url;	
-		$URL="$TBUrl"."/tts/textprocesser.php?q=".urlencode($str).".&lang=en";		
-                $filepath = $this->mp3folder.$filename;
-                //if (!file_exists($filepath)){
+	      //      $filename=md5(trim(strtoupper($str)))."voice.mp3";
+	      $filename=$this->fileNAME;
+	      $TBUrl=$this->url;	
+		$URL="$TBUrl"."/tts/textprocesser.php?q=".urlencode($str).".&lang=en&md5=".$filename;		
+              $filepath = $this->mp3folder.$filename;
+		//               $filepath=$filename;
+		//if (!file_exists($filepath)){
                     file_put_contents($filepath, file_get_contents($URL));
                // }
             }
@@ -134,12 +143,13 @@ class GoogleTTS{
       *
       */
     public function getMP3s(){
-        $ret = array();
+      $ret = array();
         foreach($this->strings as $s){
             $strA = $this->strSplitWordFriendly($s, 100);
             foreach($strA as $str){
-                $filename=md5(trim(strtoupper($str))).'.mp3';
-
+	      $voice=$this->voice;
+	      //$filename=md5(trim(strtoupper($str)))."$voice.mp3";
+	      $filename=$this->fileNAME;
                 $filepath = $this->mp3folder.$filename;
 
                 $ret[] = $filepath;

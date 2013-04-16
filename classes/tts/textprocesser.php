@@ -14,7 +14,8 @@ global $audiodir;
 //REQUESTS ADDED BY JEFF
 //$LANG=$_REQUEST['lang'];
 $LANG="en";
-$speech_raw=$_REQUEST['q'];
+$speech_raw=trim($_REQUEST['q']);
+$md5=$_REQUEST['md5'];
  print "output $speech_raw";
  $_POST["make_audio"]=true;
 
@@ -81,7 +82,11 @@ $speech = substr($speech, 0, 1024);
       // create an MP3 version?
       
         // create the lame command and execute it
-		$filenameNEW= 'mp3_tts/'.md5(trim(strtoupper($speech_raw))).'.mp3';
+      //$filenameNEW= 'mp3_tts/'.md5(trim(strtoupper($speech_raw)))."$voice.mp3";
+      error_log("TXT Processer raw string->" .$speech_raw);
+      //$filename= md5(trim(strtoupper($speech_raw)))."$voice.mp3";
+      error_log("Txt Processer md5->".$md5);
+      $filenameNEW=$md5;
         $lame_cmd = sprintf("lame --bitwidth 32 %s %s",$wave_file,$filenameNEW);
         exec($lame_cmd);
         // delete the WAV file to conserve space
