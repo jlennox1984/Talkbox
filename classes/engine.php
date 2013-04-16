@@ -74,14 +74,14 @@ $ds->setVol($vol);
  Ever wondered how popular PHP is? see the Netcraft Survey.
 ", "Thank you for using Google Text To Speech library."));
 */
-echo"string->". $straw."\n";
-error_log("Speech Engine Raw string->" .$straw);
+echo"string->". $str."\n";
+error_log("Speech Engine Raw string->" .$str);
 
-$fileNameNEW = md5(trim(strtoupper($straw)))."$voice.mp3";
+$fileNameNEW = md5(trim(strtoupper($str)))."$voice.mp3";
 error_log("Speech Engine Filename->" .$fileNameNEW);
 $ds->setFilename($fileNameNEW);
 //echo $fileNameNEW;
-$ds->setInput(array($straw));
+$ds->setInput(array($str));
 
 
 // Example readup of a whole html page. True must come as seccond arguement since this is html.
