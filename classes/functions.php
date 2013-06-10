@@ -211,7 +211,7 @@ global $DBI;
 	$recmode=$this->getconfig('record');
 	$recallmode=$this->getconfig('recall');
 	//test Log
-		error_log("rec mode->" .$recmod);
+		error_log("rec mode->" .$recmode);
 		error_log("recall mode->" .$recallmode);
 
 	 $path_pics="../pics";
