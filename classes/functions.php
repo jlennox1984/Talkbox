@@ -208,8 +208,12 @@ global $DBI;
 	function showpict($bid){
 	global  $DBI;
 	$mode='main';
-	$recmode=$this->getconfig(record);
-	$recallmode=$this->getconfig(recall);
+	$recmode=$this->getconfig('record');
+	$recallmode=$this->getconfig('recall');
+	//test Log
+		error_log("rec mode->" .$recmod);
+		error_log("recall mode->" .$recallmode);
+
 	 $path_pics="../pics";
         $sql="SELECT id,phases,paraphase,filename FROM phases WHERE boards_id='$bid'";
         $result = pg_query($DBI, $sql) or die("Error in query: $query." . pg_last_error($connection));
@@ -222,7 +226,7 @@ global $DBI;
 echo "<table>";
 $i = 0;//indexing variable
  //GET $path_pics
-	$path_pics=$this->getconfig(path_pics);
+	$path_pics=$this->getconfig('path_pics');
 	
 //$path_pics="http://demo.mwds.ca/talkbox/pics/";
 while($row = pg_fetch_array($result)){
