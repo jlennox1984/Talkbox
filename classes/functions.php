@@ -8,13 +8,12 @@ function talkboxheader(){
 		$header='<link rel="stylesheet" type="text/css" href="cake/css/cake.generic.css" />
         <link rel="stylesheet" type="text/css" href="css/talkbox.css" />
         <link rel="stylesheet" type="text/css" href="jqueryui/css/smoothness/jquery-ui-1.7.2.custom.css">
-            <script type="text/javascript" src="../js/jquery-1.6.3.js "></script>          
-        <script type="text/javascript" src="../js/talkbox.js"></script>
+          <script type="text/javascript" src="../js/talkbox.js"></script>
 	<script type="text/javascript" src="../js/ajax.js"></script>
 	<script type="text/javascript" src="../js/prototype/prototype.js"></script> 
 	        <script type="text/javascript" src="../js/scriptaculous/scriptaculous.js"></script> 
                 <script type="text/javascript" src="../js/AutoComplete.js"></script> 
-                <script type="text/javascript" src="../js/shortcut.js">
+               
 		<link rel="stylesheet" type="text/css" href="assets/style.css"></link>	
 		<script type="text/javascript">
 			var tooltipObj = new DHTMLSuite.dynamicTooltip(); // Create ONE tooltip object.
