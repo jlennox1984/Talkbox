@@ -1816,7 +1816,7 @@ theopedia	http://www.theopedia.com/$1	0	0
 twiki	http://twiki.org/cgi-bin/view/$1	0	0		
 uea	http://www.tejo.org/uea/$1	0	0		
 unreal	http://wiki.beyondunreal.com/wiki/$1	0	0		
-usemod	http://www.usemod.com/cgi-bin/wiki.pl?$1	0	0		
+usemod	http://www.usemod.com/cgi-bin/wiki.pl?$1	0	0	:	
 vinismo	http://vinismo.com/en/$1	0	0		
 webseitzwiki	http://webseitz.fluxent.com/wiki/$1	0	0		
 why	http://clublet.com/c/c/why?$1	0	0		
