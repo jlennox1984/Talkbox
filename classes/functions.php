@@ -222,20 +222,20 @@ global $DBI;
     	 die('No results returned!');
 }
 
-echo "<table>";
-$i = 0;//indexing variable
- //GET $path_pics
+	echo "<table>";
+	$i = 0;//indexing variable
+	//GET $path_pics
 	$path_pics=$this->getconfig('path_pics');
 	
 //$path_pics="http://demo.mwds.ca/talkbox/pics/";
-while($row = pg_fetch_array($result)){
-     if($i%$cols == 0)echo "<tr>\r\n";
-         $link="<a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}";
+	while($row = pg_fetch_array($result)){
+	  if($i%$cols == 0)echo "<tr>\r\n";
+	  $link="<a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}";
 
-	if($row['filename'] !=''){
-
-     		print " <td><table border='0'><tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},'$mode','$bid')></a>
-			<tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></table>
+	  if($row['filename'] !=''){
+	    
+	    print " <td><table border='0'><tr><td><a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')> <img src=\"".$path_pics."/".$row['filename']."\" width='125px' height='76px' onclick=sayit('{$row['id']},'$mode','$bid')></a>
+			<tr><td><a href='#' alt='{$row['paraphase']}'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></table>
 			</td>\r\n";
 		} else{
 		 print " <td> <table border='0'> <tr><td> <a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></tr></table></td>\r\n";
