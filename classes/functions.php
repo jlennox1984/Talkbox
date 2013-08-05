@@ -90,7 +90,7 @@ while($row = pg_fetch_array($result)){
 		$id=$row['id'];
 	     if($i%$cols == 0)echo "<tr>\r\n";
      	print "<td><table><tr><td>\r\n
-			<a href='#'  onclick=sayit('$id','$mode','$board')>{$row['phase']}</a></td>\r\n
+			<a href='#' alt'{$row['phase']}' onclick=sayit('$id','$mode','$board')>{$row['phase']}</a></td>\r\n
 				</tr>
 				";
 			
@@ -238,7 +238,7 @@ global $DBI;
 			<tr><td><a href='#' alt='{$row['paraphase']}'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></table>
 			</td>\r\n";
 		} else{
-		 print " <td> <table border='0'> <tr><td> <a href='#'  onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></tr></table></td>\r\n";
+		 print " <td> <table border='0'> <tr><td> <a href='#' alt='{$row['paraphase']}' onclick=sayit('{$row['id']}','$mode','$bid')>{$row['phases']}</a></td></tr></table></td>\r\n";
 		}
 
      if($i%$cols == $cols -1)
