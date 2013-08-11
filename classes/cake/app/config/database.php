@@ -5,8 +5,8 @@ class DATABASE_CONFIG {
 		'driver' => 'postgres',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'postgres',
-		'password' => 'postgres',
+		'login' => 'talkbox',
+		'password' => 'talkbox',
 		'database' => 'talkbox',
 		'schema' => 'public',
 	);
