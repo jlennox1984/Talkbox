@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "download Mbrola voices"
 mkdir mbrola_tmp
 cd mbrola_tmp/
