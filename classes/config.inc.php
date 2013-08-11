@@ -6,8 +6,8 @@
  */
 
 $dhost='localhost';
-$username="postgres";
-$pass="postgres";
+$username="talkbox";
+$pass="talkbox";
 $version=2.0;
 
 $password=$pass;
