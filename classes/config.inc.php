@@ -21,5 +21,5 @@ $cfg_level=1;
 $abs_path="/var/www/";
 $pic_path="/var/www/pics";
 $TBUrl='http://localhost/classes';
-$audiodir="/var/www/classes/tts/mp3_tts";
+$audiodir="/var/www/classes/mp3_tts";
 ?>
