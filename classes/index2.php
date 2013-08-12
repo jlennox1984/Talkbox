@@ -103,7 +103,6 @@ $ds = new GoogleTTSHTML;
 // Set the path to where mp3s will get cached / stored.
 $ds->setStorageFolder('mp3_tts/');
 
-
 //SET VOLUME
 $ds->setVol($vol);
 //SET URL
@@ -132,8 +131,11 @@ if(isset($_POST["tts1"])){
 	$ds->setInput(array($tts1));
 }else{
 	$tts1="";
-	$ds->setInput(array("Welcome to Talk Box"));
+	//	$ds->setInput(array("Welcome to Talk Box"));
+	$ds->setInput("Welcome to Talk Box");
+
 }
+
 /*		$ds->setInput(array("
 	 PHP  is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML.
 	 If you are new to PHP and want to get some idea of how it works, try the introductory tutorial. After that, check out the online manual,
