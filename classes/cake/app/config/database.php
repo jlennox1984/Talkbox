@@ -16,7 +16,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'postgres',
 		'password' => 'postgres',
-		'database' => '1771',
+		'database' => 'talkbox',
 		'schema' => 'public',
 	);
 	var $speachbox = array(
@@ -25,8 +25,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'port' => 5432,
 		'login' => 'postgres',
-		'password' => '5373988',
-		'database' => 'talkbox',
+		'password' =>'talkbox',
 		'schema' => 'public',
 	);
 }

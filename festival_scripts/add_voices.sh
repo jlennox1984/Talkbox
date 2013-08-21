@@ -8,6 +8,14 @@ cd mbrola_tmp/
 	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us1/us1-980512.zip
 	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
 	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us3/us3-990208.zip
+echo "download Mbrola voices"
+mkdir mbrola_tmp
+cd mbrola_tmp/
+	wget http://tcts.fpms.ac.be/synthesis/mbrola/bin/pclinux/mbrola3.0.1h_i386.deb
+	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us1/us1-980512.zip
+	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us2/us2-980812.zip
+	wget -c http://tcts.fpms.ac.be/synthesis/mbrola/dba/us3/us3-990208.zip
+	wget -c http://www.festvox.org/packed/festival/latest/festvox_us1.tar.gz
 echo "add Mbrola package"	
 	sudo dpkg -i mbrola3.0.1h_i386.deb
 echo "extract vocies"
@@ -38,7 +46,7 @@ cd /tmp/cmu
 	rm *.bz2
 	sudo mkdir -p /usr/share/festival/voices/english/
 	sudo mv * /usr/share/festival/voices/english/
-echo "rename voices for festival"
+	echo "rename voices for festival"
 	for d in `ls /usr/share/festival/voices/english` ; do
 	if [[ "$d" =~ "cmu_us_" ]] ; then
 	sudo mv "/usr/share/festival/voices/english/${d}" "/usr/share/festival/voices/english/${d}_clunits" 
