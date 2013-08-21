@@ -5,10 +5,10 @@ Moncrieff Web Design Service (MWDS)
 ########################
 #Manual Install UBUNTU #
 ########################
- To do a Manual Install you will need a a couple of depencies 
+ To do a Manual Install you will need  a couple of depencies 
 
 	0.Linux based os ie Ubuntu,debian,Redhat.
-	1.apache Http server
+	1.Apache Webserver 2x
 	2.PHP 
 	3.Postgresql
 	4.festival
@@ -20,7 +20,7 @@ Moncrieff Web Design Service (MWDS)
     sudo apt-get install apache2 php5 postgres lame festival git php5-pgsql libapache2-mod-php5 
 
 
-3->download talkbox 
+2->download talkbox 
 type
 	git clone http://github.com/jmoncrieff/talkbox.git/ /var/www 
 then type 
@@ -52,5 +52,16 @@ RUN
 
 
 6-> Test
- launch firefox and go to http://localhost
+ launch your web browser and go to http://localhost/
+
+##############
+#ADD Voices #
+############
+Please Note this only works with Ubuntu
+
+1->/var/www/festival_scripts/add_voices.sh in console
+2-> to change voice in talkbox from the navigation menu
+	admin
+	|
+	-edit voice
 
