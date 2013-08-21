@@ -5,10 +5,9 @@ Moncrieff Web Design Service (MWDS)
 ########################
 #Manual Install UBUNTU #
 ########################
-<<<<<<< HEAD
  To do a Manual Install you will need  a couple of depencies 
 
-	0.Linux based os ie Ubuntu,debian,Redhat.
+	0.Linux based OS ie Ubuntu,debian,Redhat.
 	1.Apache Webserver 2x
 	2.PHP 
 	3.Postgresql
