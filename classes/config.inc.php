@@ -22,4 +22,5 @@ $abs_path="/var/www/";
 $pic_path="/var/www/pics";
 $TBUrl='http://localhost/classes';
 $audiodir="/var/www/classes/mp3_tts";
+$tmpdir="/tmp/";
 ?>

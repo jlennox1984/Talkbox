@@ -8,7 +8,7 @@ header("Server:translation");
 
 // define the temporary directory
 // and where audio files will be written to after conversion
-$tmpdir = "/var/www/tmp";
+global $tmpdir;
 $serverroot = $_SERVER['DOCUMENT_ROOT'];
 global $audiodir;
 //REQUESTS ADDED BY JEFF
